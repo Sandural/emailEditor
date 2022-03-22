@@ -75,17 +75,17 @@
 </template>
 
 <script>
-import ACEEDITOR from "vue2-ace-editor";
-import template from "../template-web.js";
+import ACEEDITOR from 'vue2-ace-editor';
+import template from '../template-web.js';
 
 export default {
-  inject: ["editor"],
+  inject: ['editor'],
   components: { ACEEDITOR },
   data() {
     return {
       showExportDialog: false,
       showImportDialog: false,
-      importData: "",
+      importData: '',
       showPreviewDialog: false,
       code: `{
         "desc": "1243",
@@ -108,9 +108,9 @@ export default {
         // 去除编辑器里的竖线
         showPrintMargin: false,
       },
-      preview: "",
-      receivers: ["v_mningchen"],
-      title: "自动化 demo",
+      preview: '',
+      receivers: ['v_mningchen'],
+      title: '自动化 demo',
     };
   },
   computed: {
@@ -122,18 +122,18 @@ export default {
     sendEmail() {
       axios
         .post(
-          `http://12306.woa.com/sendEmailApi`,
+          'http://12306.woa.com/sendEmailApi',
           {
             receivers: this.receivers,
             content: this.preview,
-            title: "自动化测试报告",
+            title: '自动化测试报告',
           },
           {
             headers: {
               cookie:
-                "x-client-ssid=17faf6fda8f-bb1dd220d221c5db0686a13fa4c235dbbf6739c7; TCOA_TICKET=TOF4TeyJ2IjoiNCIsInRpZCI6Ikdpb0RhQnFWN0g5ZEdzU0tDNDJOWEZNeGI5T1Z2RW9vIiwiaXNzIjoiMTAuOTkuMjA4LjU2IiwiaWF0IjoiMjAyMi0wMy0yMlQxMDoyMzozNi43NDMxNDQ4NzIrMDg6MDAiLCJhdWQiOiIwLjAuMC4wIiwiaGFzaCI6IjRBQjU5MEEzMjFFOTZGQUM5QkVFQ0VFRTVGMjAyNkYyNjg3OTVDMTQ3QjkwNUUwQUMzNjg3RDZGOUU2QUIxNkYiLCJuaCI6IjM4NDNGNjc1QTFBOTAyQ0Q2RDg2NzJBRDkyMjBBNDNEQ0NBMjMxMTJEODYyMEQxODVBMzM2M0NDMkI0OThGMDAifQ; TCOA=GioDaBqV7H9dGsSKC42NXFMxb9OVvEoo; x-host-key-ngn=17faf6fdbf9-67f87cb67c7fd37e740f4b2799bc66cd2f2f6780; RIO_TCOA_TICKET=tof:TOF4TeyJ2IjoiNCIsInRpZCI6Ikdpb0RhQnFWN0g5ZEdzU0tDNDJOWEZNeGI5T1Z2RW9vIiwiaXNzIjoiMTAuOTkuMjA4LjU2IiwiaWF0IjoiMjAyMi0wMy0yMlQxMDoyMzozNi43NDMxNDQ4NzIrMDg6MDAiLCJhdWQiOiIwLjAuMC4wIiwiaGFzaCI6IjRBQjU5MEEzMjFFOTZGQUM5QkVFQ0VFRTVGMjAyNkYyNjg3OTVDMTQ3QjkwNUUwQUMzNjg3RDZGOUU2QUIxNkYiLCJuaCI6IjM4NDNGNjc1QTFBOTAyQ0Q2RDg2NzJBRDkyMjBBNDNEQ0NBMjMxMTJEODYyMEQxODVBMzM2M0NDMkI0OThGMDAifQ; wxuin=47915818328573; x-host-key-front=17faf98ba4b-745bf610cb8d822d5603fab2df465f4ba11e7517",
+                'x-client-ssid=17faf6fda8f-bb1dd220d221c5db0686a13fa4c235dbbf6739c7; TCOA_TICKET=TOF4TeyJ2IjoiNCIsInRpZCI6Ikdpb0RhQnFWN0g5ZEdzU0tDNDJOWEZNeGI5T1Z2RW9vIiwiaXNzIjoiMTAuOTkuMjA4LjU2IiwiaWF0IjoiMjAyMi0wMy0yMlQxMDoyMzozNi43NDMxNDQ4NzIrMDg6MDAiLCJhdWQiOiIwLjAuMC4wIiwiaGFzaCI6IjRBQjU5MEEzMjFFOTZGQUM5QkVFQ0VFRTVGMjAyNkYyNjg3OTVDMTQ3QjkwNUUwQUMzNjg3RDZGOUU2QUIxNkYiLCJuaCI6IjM4NDNGNjc1QTFBOTAyQ0Q2RDg2NzJBRDkyMjBBNDNEQ0NBMjMxMTJEODYyMEQxODVBMzM2M0NDMkI0OThGMDAifQ; TCOA=GioDaBqV7H9dGsSKC42NXFMxb9OVvEoo; x-host-key-ngn=17faf6fdbf9-67f87cb67c7fd37e740f4b2799bc66cd2f2f6780; RIO_TCOA_TICKET=tof:TOF4TeyJ2IjoiNCIsInRpZCI6Ikdpb0RhQnFWN0g5ZEdzU0tDNDJOWEZNeGI5T1Z2RW9vIiwiaXNzIjoiMTAuOTkuMjA4LjU2IiwiaWF0IjoiMjAyMi0wMy0yMlQxMDoyMzozNi43NDMxNDQ4NzIrMDg6MDAiLCJhdWQiOiIwLjAuMC4wIiwiaGFzaCI6IjRBQjU5MEEzMjFFOTZGQUM5QkVFQ0VFRTVGMjAyNkYyNjg3OTVDMTQ3QjkwNUUwQUMzNjg3RDZGOUU2QUIxNkYiLCJuaCI6IjM4NDNGNjc1QTFBOTAyQ0Q2RDg2NzJBRDkyMjBBNDNEQ0NBMjMxMTJEODYyMEQxODVBMzM2M0NDMkI0OThGMDAifQ; wxuin=47915818328573; x-host-key-front=17faf98ba4b-745bf610cb8d822d5603fab2df465f4ba11e7517',
             },
-          }
+          },
         )
         .then((res) => {
           console.log(res);
@@ -141,10 +141,10 @@ export default {
     },
 
     applyData() {
-      let code = JSON.parse(this.code);
+      const code = JSON.parse(this.code);
       // console.log("code", code);
       // console.log('oScript.innerHTML', oScript.innerHTML);
-      let html = template("tpl", JSON.parse(this.code));
+      const html = template('tpl', JSON.parse(this.code));
       console.log(html);
       this.preview = html;
       this.$nextTick(() => {
@@ -155,27 +155,30 @@ export default {
     handleElementStyle(elementStyle) {
       const style = {};
       const styleResolverMap = {
-        "box-shadow": ({ x, y, blur, spread, color }) =>
-          `${x}px ${y}px ${blur}px ${spread}px ${color}`,
-        "background-image": (url) => (url !== "none" ? `url('${url}')` : url),
-        "text-shadow": ({ x, y, blur, color }) => `${x}px ${y}px ${blur}px ${color}`,
+        'box-shadow': ({
+          x, y, blur, spread, color,
+        }) => `${x}px ${y}px ${blur}px ${spread}px ${color}`,
+        'background-image': (url) => (url !== 'none' ? `url('${url}')` : url),
+        'text-shadow': ({
+          x, y, blur, color,
+        }) => `${x}px ${y}px ${blur}px ${color}`,
         width: (width) => `${width}%`,
-        "border-radius": (r) => `${r}%`,
+        'border-radius': (r) => `${r}%`,
       };
 
       Object.entries(elementStyle).forEach(([key, value]) => {
         if (styleResolverMap[key]) {
           style[key] = styleResolverMap[key](value);
-        } else if (typeof value === "number") {
+        } else if (typeof value === 'number') {
           style[key] = `${value}px`;
         } else {
           style[key] = value;
         }
       });
 
-      let styleStr = "";
+      let styleStr = '';
       for (const key in style) {
-        styleStr = styleStr + `${key}:${style[key]};`;
+        styleStr += `${key}:${style[key]};`;
       }
       // console.log("styleStr", styleStr);
       return styleStr;
@@ -185,46 +188,46 @@ export default {
       arr.forEach((item, index) => {
         let dom;
         switch (item.componentName) {
-          case "Heading": {
+          case 'Heading': {
             dom = document.createElement(item.props.headingType);
-            dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
+            dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
             dom.innerText = item.props.content;
             break;
           }
 
-          case "Canvas": {
-            dom = document.createElement("div");
+          case 'Canvas': {
+            dom = document.createElement('div');
             dom.setAttribute(
-              "style",
-              this.handleElementStyle(item.props.elementStyle) + "display: flex;"
+              'style',
+              `${this.handleElementStyle(item.props.elementStyle)}display: flex;`,
             );
             // 去除掉 100% 宽度
-            dom.style.width = "auto";
+            dom.style.width = 'auto';
             break;
           }
 
-          case "Paragraph": {
-            dom = document.createElement("p");
-            dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
+          case 'Paragraph': {
+            dom = document.createElement('p');
+            dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
             dom.innerText = item.props.content;
             break;
           }
 
-          case "Picture": {
-            dom = document.createElement("img");
-            dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
-            dom.setAttribute("src", item.props.imageUrl);
+          case 'Picture': {
+            dom = document.createElement('img');
+            dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
+            dom.setAttribute('src', item.props.imageUrl);
             break;
           }
 
-          case "Button": {
-            dom = document.createElement("button");
+          case 'Button': {
+            dom = document.createElement('button');
             dom.setAttribute(
-              "style",
-              this.handleElementStyle(item.props.elementStyle) + "cursor: pointer;"
+              'style',
+              `${this.handleElementStyle(item.props.elementStyle)}cursor: pointer;`,
             );
-            dom.setAttribute("class", "clickBtn");
-            dom.setAttribute("url", item.props.btnUrl);
+            dom.setAttribute('class', 'clickBtn');
+            dom.setAttribute('url', item.props.btnUrl);
             // dom.setAttribute('id', `clickBtn${index}`)
             dom.innerHTML = item.props.content;
             // console.log('item.props.btnUrl', item.props.btnUrl, dom);
@@ -246,10 +249,10 @@ export default {
 
     openPreviewDialog() {
       this.showPreviewDialog = true;
-      let parentNode = document.createElement("div");
-      parentNode.setAttribute("id", "previewDialog");
-      let oScript = document.getElementById("tpl");
-      let item = this.createNode(parentNode, this.editor.nodes);
+      const parentNode = document.createElement('div');
+      parentNode.setAttribute('id', 'previewDialog');
+      const oScript = document.getElementById('tpl');
+      const item = this.createNode(parentNode, this.editor.nodes);
       oScript.innerHTML = item.outerHTML;
       this.preview = item.outerHTML;
       this.$nextTick(() => {
@@ -259,27 +262,27 @@ export default {
 
     bindEvent() {
       // btn 的通用事件
-      let arr = document.querySelectorAll(".clickBtn");
-      console.log("arr", arr);
+      const arr = document.querySelectorAll('.clickBtn');
+      console.log('arr', arr);
       for (let index = 0; index < arr.length; index++) {
         const element = arr[index];
-        element.addEventListener("click", (e) => {
-          const url = element.getAttribute("url");
-          window.open(url, "_blank");
+        element.addEventListener('click', (e) => {
+          const url = element.getAttribute('url');
+          window.open(url, '_blank');
         });
       }
     },
     editorInit() {
-      require("brace/theme/chrome");
-      require("brace/ext/language_tools"); //language extension prerequsite...
-      require("brace/mode/yaml");
-      require("brace/mode/json");
-      require("brace/mode/less");
-      require("brace/snippets/json");
-      require("brace/mode/lua");
-      require("brace/snippets/lua");
-      require("brace/mode/javascript");
-      require("brace/snippets/javascript");
+      require('brace/theme/chrome');
+      require('brace/ext/language_tools'); // language extension prerequsite...
+      require('brace/mode/yaml');
+      require('brace/mode/json');
+      require('brace/mode/less');
+      require('brace/snippets/json');
+      require('brace/mode/lua');
+      require('brace/snippets/lua');
+      require('brace/mode/javascript');
+      require('brace/snippets/javascript');
     },
     updateState(enabled) {
       if (enabled) {
@@ -296,14 +299,14 @@ export default {
     },
     copyExport() {
       this.$refs.exportTextarea.select();
-      document.execCommand("Copy");
-      this.$message.success("Copied!");
+      document.execCommand('Copy');
+      this.$message.success('Copied!');
     },
     doImport() {
       try {
         this.editor.import(this.importData);
-        this.$message.success("Imported!");
-        this.importData = "";
+        this.$message.success('Imported!');
+        this.importData = '';
         this.toggleImportDialog();
       } catch ({ message }) {
         this.$message.error(message);
@@ -312,9 +315,9 @@ export default {
   },
 
   mounted() {
-    const oScript = document.createElement("script");
-    oScript.type = "text/html";
-    oScript.id = "tpl";
+    const oScript = document.createElement('script');
+    oScript.type = 'text/html';
+    oScript.id = 'tpl';
     document.body.appendChild(oScript);
   },
 };

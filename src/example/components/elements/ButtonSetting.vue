@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import mixin from "./styleSettings/mixin";
+import mixin from './styleSettings/mixin';
 
 export default {
   mixins: [mixin],
   methods: {
     updateButtonUrl(btnUrl) {
-        this.elementPropsSetter({ btnUrl })
-    }
-  }
+      this.elementPropsSetter({ btnUrl });
+    },
+  },
 };
 </script>
