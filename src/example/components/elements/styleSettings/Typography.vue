@@ -28,7 +28,7 @@
       </el-radio-group>
     </el-form-item>
 
-    <el-form-item label="颜色" v-if="styleExist('color')">
+    <el-form-item label="字体颜色" v-if="styleExist('color')">
       <el-color-picker
         show-alpha
         :value="getStyle('color')"
@@ -36,7 +36,15 @@
       />
     </el-form-item>
 
-    <label class="el-form-item__label">阴影</label>
+    <el-form-item label="背景颜色" v-if="styleExist('background-color')">
+      <el-color-picker
+        show-alpha
+        :value="getStyle('background-color')"
+        @active-change="setStyle('background-color', $event)"
+      />
+    </el-form-item>
+
+    <label class="el-form-item__label" v-if="styleExist('text-shadow')">阴影</label>
 
     <el-row :gutter="20">
       <el-col :span="12">

@@ -9,7 +9,7 @@
       ></el-slider>
     </el-form-item>
 
-    <label class="el-form-item__label">阴影</label>
+    <label class="el-form-item__label" v-if="styleExist('box-shadow')">阴影</label>
 
     <el-row :gutter="20">
       <el-col :span="12">
@@ -49,7 +49,7 @@
         </el-form-item>
       </el-col>
     </el-row>
-    <el-form-item label="颜色" v-if="styleExist('box-shadow')">
+    <el-form-item label="阴影颜色" v-if="styleExist('box-shadow')">
       <el-color-picker
         show-alpha
         :value="getStyle('box-shadow').color"

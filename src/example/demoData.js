@@ -130,7 +130,7 @@ export default `
                     {
                         "componentName": "Picture",
                         "props": {
-                            "imageUrl": "/img/default_picture_image.86619316.jpg",
+                            "imageUrl": "https://emoji-1303099125.cos.ap-guangzhou.myqcloud.com/tyan2d_anim-512px-11.gif",
                             "elementStyle": {
                                 "width": 30,
                                 "margin-top": 0,
@@ -161,12 +161,11 @@ export default `
                     "content": "按钮",
                     "btnUrl": "https://www.baidu.com",
                     "elementStyle": {
-                        "text-align": "center",
                         "font-size": 16,
                         "padding-top": 5,
                         "padding-bottom": 5,
-                        "padding-right": 5,
-                        "padding-left": 5,
+                        "padding-right": 20,
+                        "padding-left": 20,
                         "margin-top": 0,
                         "margin-left": 0,
                         "margin-bottom": 0,
@@ -174,7 +173,14 @@ export default `
                         "border": "none",
                         "color": "rgb(0,0,0)",
                         "background-color": "rgba(0,0,0, .2)",
-                        "border-radius": 3
+                        "border-radius": 3,
+                        "box-shadow": {
+                            "x": 0,
+                            "y": 0,
+                            "blur": 0,
+                            "spread": 0,
+                            "color": "rgba(0,0,0,0)"
+                        }
                     }
                 },
                 "children": [],
