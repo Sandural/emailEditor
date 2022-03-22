@@ -38,7 +38,7 @@ export default `
                 "componentName": "Heading",
                 "props": {
                     "headingType": "h1",
-                    "content": "这是一个标题.",
+                    "content": "这是一个标题.{{desc}}",
                     "elementStyle": {
                         "font-size": 24,
                         "font-weight": "normal",

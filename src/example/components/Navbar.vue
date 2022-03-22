@@ -54,25 +54,21 @@
           <ACEEDITOR
             v-model="code"
             @init="editorInit"
-            @input="codeChange"
             lang="javascript"
             :options="editorOptions"
             theme="chrome"
           ></ACEEDITOR>
         </div>
-        <div
-          style="
-            height: 600px;
-            width: 75%;
-            border: 1px solid #dcdee2;
-            overflow: auto;
-          "
-        >
+        <div style="height: 600px; width: 75%; border: 1px solid #dcdee2; overflow: auto">
           <div v-html="preview"></div>
         </div>
-        <el-button type="text" @click="sendEmail" style="position: absolute; right: 30px;top:40px">
-            <i class="el-icon-position"></i> 发邮件
-          </el-button>
+        <el-button
+          type="text"
+          @click="sendEmail"
+          style="position: absolute; right: 30px; top: 40px"
+        >
+          <i class="el-icon-position"></i> 发邮件
+        </el-button>
       </div>
     </el-dialog>
   </nav>
@@ -146,12 +142,14 @@ export default {
 
     applyData() {
       let code = JSON.parse(this.code);
-      console.log("code", code);
-
+      // console.log("code", code);
       // console.log('oScript.innerHTML', oScript.innerHTML);
       let html = template("tpl", JSON.parse(this.code));
       console.log(html);
       this.preview = html;
+      this.$nextTick(() => {
+        this.bindEvent();
+      });
     },
 
     handleElementStyle(elementStyle) {
@@ -184,7 +182,7 @@ export default {
     },
 
     createNode(pnode, arr) {
-      arr.forEach((item) => {
+      arr.forEach((item, index) => {
         let dom;
         switch (item.componentName) {
           case "Heading": {
@@ -223,19 +221,20 @@ export default {
             dom = document.createElement("button");
             dom.setAttribute(
               "style",
-              this.handleElementStyle(item.props.elementStyle) + 'cursor: pointer;'
+              this.handleElementStyle(item.props.elementStyle) + "cursor: pointer;"
             );
+            dom.setAttribute("class", "clickBtn");
+            dom.setAttribute("url", item.props.btnUrl);
+            // dom.setAttribute('id', `clickBtn${index}`)
             dom.innerHTML = item.props.content;
-            console.log('item.props.btnUrl', item.props.btnUrl);
-            dom.onclick = () => {
-                window.location.href = item.props.btnUrl;
-            }
+            // console.log('item.props.btnUrl', item.props.btnUrl, dom);
             break;
           }
 
           default:
             break;
         }
+        // console.dir(dom)
         pnode.appendChild(dom);
         if (item.children.length) {
           this.createNode(dom, item.children);
@@ -246,19 +245,29 @@ export default {
     },
 
     openPreviewDialog() {
+      this.showPreviewDialog = true;
       let parentNode = document.createElement("div");
       parentNode.setAttribute("id", "previewDialog");
-
       let oScript = document.getElementById("tpl");
-      console.log("this.editor.nodes", this.editor.nodes);
       let item = this.createNode(parentNode, this.editor.nodes);
       oScript.innerHTML = item.outerHTML;
       this.preview = item.outerHTML;
-      this.showPreviewDialog = true;
+      this.$nextTick(() => {
+        this.bindEvent();
+      });
     },
 
-    codeChange(val) {
-      console.log(val);
+    bindEvent() {
+      // btn 的通用事件
+      let arr = document.querySelectorAll(".clickBtn");
+      console.log("arr", arr);
+      for (let index = 0; index < arr.length; index++) {
+        const element = arr[index];
+        element.addEventListener("click", (e) => {
+          const url = element.getAttribute("url");
+          window.open(url, "_blank");
+        });
+      }
     },
     editorInit() {
       require("brace/theme/chrome");

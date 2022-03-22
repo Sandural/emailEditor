@@ -1,11 +1,12 @@
 <template>
-  <Editor
+    <Editor
     tag="button"
     :style="elementCSS"
     @input="updateContent"
     :value="content"
     :btnUrl="btnUrl"
   ></Editor>
+  
 </template>
 
 <script>
@@ -24,6 +25,9 @@ export default {
     updateContent(content) {
       this.node.setProps({ content });
     },
+    test() {
+      console.log('test');
+    }
   },
   craft: {
     defaultProps: {
