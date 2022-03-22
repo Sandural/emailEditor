@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./template-web.js"></script>
+</head>
+<body>
+    <script type="text/html" id="tpl1">
+        <div id="previewDialog">
+            <div style="overflow: hidden; margin: 0px; padding: 10px; width: auto; height: auto; flex-direction: column; justify-content: flex-start; align-items: flex-start; border-radius: 0%; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px; background-color: rgba(0, 0, 0, 0); background-image: none; background-attachment: scroll; display: flex;">
+                <h1 style="font-size:24px;font-weight:normal;text-align:left;color:rgb(0,0,0);margin-top:0px;margin-left:0px;margin-bottom:0px;margin-right:0px;padding-top:0px;padding-left:0px;padding-bottom:0px;padding-right:0px;text-shadow:0px 0px 0px rgba(0,0,0,0);">这是一个标题. {{desc}}</h1>
+                <div style="overflow: hidden; margin: 0px; padding: 10px 10px 11px; width: auto; height: auto; flex-direction: row; justify-content: flex-start; align-items: flex-start; border-radius: 0%; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px; background-color: rgba(0, 0, 0, 0); background-image: none; background-attachment: scroll; display: flex;">
+                    <p style="font-size:14px;font-weight:normal;text-align:left;line-height:1.5;color:rgb(0,0,0);margin-top:0px;margin-left:0px;margin-bottom:0px;margin-right:0px;padding-top:0px;padding-left:0px;padding-bottom:0px;padding-right:0px;text-shadow:0px 0px 0px rgba(0,0,0,0);">{{params}}</p>
+                    <img style="width:12%;margin-top:0px;margin-left:0px;margin-bottom:0px;margin-right:0px;border-radius:14%;box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 1);" src="{{imgUrl}}" width="12">
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script>
+        let html = template('tpl1', {
+            "desc": "1243",
+            "params": "124w",
+            "imgUrl": "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png"
+        })
+        console.log(html);
+        document.body.innerHTML = html;
+    </script>
+</body>
+</html>
