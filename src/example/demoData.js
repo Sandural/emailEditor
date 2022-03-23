@@ -188,14 +188,50 @@ export default `
                 "uuid": "dfe19a32-90b7-4b8f-aa2b-334e64ee8d68"
             },
             {
-                "componentName": "Table",
+                "componentName": "Canvas",
                 "props": {
-                    "content": "",
-                    "elementStyle": {}
+                    "elementStyle": {
+                        "margin-top": 0,
+                        "margin-left": 0,
+                        "margin-bottom": 0,
+                        "margin-right": 0,
+                        "padding-top": 30,
+                        "padding-left": 30,
+                        "padding-bottom": 30,
+                        "padding-right": 30,
+                        "width": 100,
+                        "height": "auto",
+                        "flex-direction": "column",
+                        "justify-content": "flex-start",
+                        "align-items": "center",
+                        "border-radius": 0,
+                        "box-shadow": {
+                            "x": 0,
+                            "y": 0,
+                            "blur": 0,
+                            "spread": 0,
+                            "color": "rgba(0,0,0,0)"
+                        },
+                        "background-color": "rgba(0,0,0,0)",
+                        "background-image": "none",
+                        "background-attachment": "scroll"
+                    },
+                    "component": "Container"
                 },
-                "children": [],
+                "children": [
+                    {
+                        "componentName": "Table",
+                        "props": {
+                            "content": "",
+                            "elementStyle": {}
+                        },
+                        "children": [],
+                        "addition": {},
+                        "uuid": "5a1ac5b3-d3a9-478c-906f-a2490b4fe977"
+                    }
+                ],
                 "addition": {},
-                "uuid": "5a1ac5b3-d3a9-478c-906f-a2490b4fe977"
+                "uuid": "a7f6c544-d573-4b2e-98f5-5b91924b6aa2"
             }
         ],
         "addition": {},
