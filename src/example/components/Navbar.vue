@@ -91,7 +91,8 @@ export default {
         "desc": "1243",
         "params": "124w",
         "title": "hello world",
-        "imgUrl": "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png"
+        "imgUrl": "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png",
+        "tableData": {"第一列":["1-1","2-1","3-1"],"第二列":["1-2","2-2","3-2"],"第三列":["1-3","2-3","3-3"]}
       }`,
       editorOptions: {
         // 设置代码编辑器的样式
@@ -189,7 +190,9 @@ export default {
         let dom;
         switch (item.componentName) {
           case 'Heading': {
-            dom = document.createElement(item.props.headingType);
+            let tag = item.props.textHref ? 'a' : item.props.headingType;
+            dom = document.createElement(tag);
+            if(tag === 'a') {dom.setAttribute('href', item.props.textHref)}
             dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
             dom.innerText = item.props.content;
             break;
@@ -235,20 +238,27 @@ export default {
           case 'Table': {
             dom = document.createElement('table');
             dom.setAttribute('id', item.uuid);
-            let thead = document.createElement('thead');
-            let tr = document.createElement('tr')
-            let th = document.createElement('th');
             
-            dom.innerHTML = `
+            dom.innerHTML = template.render(`
               <thead>
                 <tr>
-                  {{ each item.props.content.tColumns }}
-                      <th> {{ $value }} </th>
+                  {{ each item.props.content.tData}}
+                      <th> {{$index}} </th>
                   {{ /each }}
                 </tr>
               </thead>
-            `;
-            console.log('dom', dom);
+              <tbody>
+                {{ each item.props.content.tData }}
+                  <tr>
+                    {{ set data = $value }}
+                    {{ each data }}
+                      <td>{{$value}}</td>
+                    {{ /each }}
+                  </tr>
+                {{ /each }}
+              </tbody>
+            `, { item });
+            console.log('dom', dom, item);
             break;
           }
 

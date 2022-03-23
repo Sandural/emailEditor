@@ -2,12 +2,12 @@
   <table>
     <thead>
       <tr>
-        <th v-for="h in elementProps.content.tColumns" align="left">{{ h }}</th>
+        <th v-for="(key, value, index) in elementProps.content.tData" align="left">{{ value }}</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="r in elementProps.content.tData">
-        <td v-for="(value, key, index) in r" align="left">{{ value }}</td>
+        <td v-for="(value, index) in r" align="left">{{ value }}</td>
       </tr>
     </tbody>
   </table>
@@ -17,7 +17,7 @@
 import Editor from "./utils/Editor.vue";
 import elementStyleMixin from "./elementStyleMixin";
 import TableSetting from "./TableSetting.vue";
-import { settingMixin } from '@';
+import { settingMixin } from "@";
 
 export default {
   mixins: [elementStyleMixin, settingMixin],
@@ -29,24 +29,11 @@ export default {
   craft: {
     defaultProps: {
       content: {
-        tColumns: ["第一列", "第二列", "第三列"],
-        tData: [
-            {
-                "prop1": "1-1",
-                "prop2": "1-2",
-                "prop3": "1-3",
-            },
-            {
-                "prop1": "2-1",
-                "prop2": "2-2",
-                "prop3": "2-3",
-            },
-            {
-                "prop1": "3-1",
-                "prop2": "3-2",
-                "prop3": "3-3",
-            }
-        ]
+        tData: {
+          "第一列": ["1-1", "2-1", "3-1"],
+          "第二列": ["1-2", "2-2", "3-2"],
+          "第三列": ["1-3", "2-3", "3-3"]
+        }
       },
       elementStyle: {},
     },
@@ -75,7 +62,7 @@ th {
 }
 
 thead tr {
-  height: 60px;
+  height: 50px;
   background: #ffed8660;
   font-size: 16px;
 }
