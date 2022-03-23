@@ -234,6 +234,11 @@ export default {
             break;
           }
 
+          case 'Table': {
+            dom = document.createElement('table');
+            
+          }
+
           default:
             break;
         }

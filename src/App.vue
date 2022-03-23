@@ -20,6 +20,7 @@ import Paragraph from "./example/components/elements/Paragraph.vue";
 import Heading from "./example/components/elements/Heading.vue";
 import Picture from "./example/components/elements/Picture.vue";
 import Button from "./example/components/elements/Button.vue";
+import Table from "./example/components/elements/Table.vue";
 import Carousel from "./example/components/elements/Carousel.vue";
 import demoData from "./example/demoData";
 
@@ -42,6 +43,7 @@ export default {
         Picture,
         Carousel,
         Button,
+        Table
       },
       demoData,
     };

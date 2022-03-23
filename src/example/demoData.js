@@ -132,7 +132,7 @@ export default `
                         "props": {
                             "imageUrl": "https://emoji-1303099125.cos.ap-guangzhou.myqcloud.com/tyan2d_anim-512px-11.gif",
                             "elementStyle": {
-                                "width": 30,
+                                "width": 13,
                                 "margin-top": 0,
                                 "margin-left": 0,
                                 "margin-bottom": 0,
@@ -186,6 +186,16 @@ export default `
                 "children": [],
                 "addition": {},
                 "uuid": "dfe19a32-90b7-4b8f-aa2b-334e64ee8d68"
+            },
+            {
+                "componentName": "Table",
+                "props": {
+                    "content": "",
+                    "elementStyle": {}
+                },
+                "children": [],
+                "addition": {},
+                "uuid": "5a1ac5b3-d3a9-478c-906f-a2490b4fe977"
             }
         ],
         "addition": {},

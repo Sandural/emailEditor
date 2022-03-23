@@ -40,13 +40,17 @@
       </Blueprint>
     </el-tooltip>
 
-    <!-- <el-tooltip effect="dark" content="表格" placement="right">
+    <el-tooltip effect="dark" content="代码">
+
+    </el-tooltip>
+
+    <el-tooltip effect="dark" content="表格" placement="right">
       <Blueprint :component="ElementBlock" icon="table_view">
         <template v-slot:blueprint>
-          <Carousel />
+          <Table />
         </template>
       </Blueprint>
-    </el-tooltip> -->
+    </el-tooltip>
 
     <el-tooltip effect="dark" content="按钮" placement="right">
       <Blueprint :component="ElementBlock" icon="smart_button">
@@ -56,7 +60,7 @@
       </Blueprint>
     </el-tooltip>
 
-    <el-tooltip effect="dark" content="容器" placement="right">
+    <!-- <el-tooltip effect="dark" content="容器" placement="right">
       <Blueprint :component="ElementBlock" icon="view_column">
         <template v-slot:blueprint>
           <Canvas component="Container" v-bind="rowProps">
@@ -66,7 +70,7 @@
           </Canvas>
         </template>
       </Blueprint>
-    </el-tooltip>
+    </el-tooltip> -->
   </div>
 </template>
 
@@ -76,7 +80,8 @@ import ElementBlock from './ElementBlock.vue';
 import Paragraph from './elements/Paragraph.vue';
 import Heading from './elements/Heading.vue';
 import Picture from './elements/Picture.vue';
-import Button from './elements/Button.vue'
+import Button from './elements/Button.vue';
+import Table from './elements/Table.vue';
 import Carousel from './elements/Carousel.vue';
 import Container from './elements/Container.vue';
 
@@ -86,6 +91,7 @@ export default {
     Canvas,
     Paragraph,
     Button,
+    Table,
     Heading,
     Picture,
     Carousel,
@@ -97,7 +103,7 @@ export default {
       rowProps: {
         elementStyle: {
           ...Container.craft.defaultProps.elementStyle,
-          'flex-direction': 'row',
+          'flex-direction': 'column',
         },
       },
     };
