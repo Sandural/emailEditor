@@ -36,6 +36,7 @@ export default {
       content: '按钮',
       btnUrl: 'https://www.baidu.com',
       elementStyle: {
+        'flex-shrink': 0,
         'font-style': 16,
         'padding-top': 5,
         'padding-bottom': 5,

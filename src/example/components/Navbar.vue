@@ -228,15 +228,28 @@ export default {
             );
             dom.setAttribute('class', 'clickBtn');
             dom.setAttribute('url', item.props.btnUrl);
-            // dom.setAttribute('id', `clickBtn${index}`)
             dom.innerHTML = item.props.content;
-            // console.log('item.props.btnUrl', item.props.btnUrl, dom);
             break;
           }
 
           case 'Table': {
             dom = document.createElement('table');
+            dom.setAttribute('id', item.uuid);
+            let thead = document.createElement('thead');
+            let tr = document.createElement('tr')
+            let th = document.createElement('th');
             
+            dom.innerHTML = `
+              <thead>
+                <tr>
+                  {{ each item.props.content.tColumns }}
+                      <th> {{ $value }} </th>
+                  {{ /each }}
+                </tr>
+              </thead>
+            `;
+            console.log('dom', dom);
+            break;
           }
 
           default:
@@ -268,7 +281,7 @@ export default {
     bindEvent() {
       // btn 的通用事件
       const arr = document.querySelectorAll('.clickBtn');
-      console.log('arr', arr);
+      if(!arr.length) return false;
       for (let index = 0; index < arr.length; index++) {
         const element = arr[index];
         element.addEventListener('click', (e) => {

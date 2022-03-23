@@ -11,7 +11,6 @@ import PictureSetting from './PictureSetting.vue';
 import Margin from './styleSettings/Margin.vue';
 import Decoration from './styleSettings/Decoration.vue';
 import elementStyleMixin from './elementStyleMixin';
-// import defaultImageUrl from './assets/default_picture_image.jpg';
 
 export default {
   mixins: [elementStyleMixin],
