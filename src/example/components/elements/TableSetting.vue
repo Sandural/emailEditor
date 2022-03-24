@@ -64,10 +64,6 @@ export default {
   row-gap: 10px;
 }
 
-/* #tableSetting .el-input--mini .el-input__inner {
-  height: 100px;
-} */
-
 .tcard {
   display: flex;
   flex-direction: column;
@@ -77,7 +73,7 @@ export default {
   border-radius: 4px;
 }
 
-.el-textarea .el-textarea__inner {
+#tableSetting .el-textarea .el-textarea__inner {
   resize: none;
   height: 100px !important;
 }

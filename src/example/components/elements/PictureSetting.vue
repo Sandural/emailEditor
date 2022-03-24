@@ -5,18 +5,12 @@
     </el-form-item>
 
     <el-form-item label="图片宽度">
-      <el-slider
-        :value="getStyle('width')"
-        :formatTooltip="formatTooltip"
-        :max="100"
-        @input="setStyle('width', $event)"
-      ></el-slider>
+      <el-input :value="getStyle('width')" @input="setStyle('width', $event)"></el-input>
     </el-form-item>
   </el-form>
 </template>
 
 <script>
-// import { settingMixin } from "@";
 import mixin from './styleSettings/mixin';
 
 export default {

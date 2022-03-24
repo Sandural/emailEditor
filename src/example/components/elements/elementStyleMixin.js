@@ -16,7 +16,6 @@ export default {
         'text-shadow': ({
           x, y, blur, color,
         }) => `${x}px ${y}px ${blur}px ${color}`,
-        'width': (width) => `${width}%`,
         'flex-shrink': (x) => x,
       };
 
@@ -32,7 +31,7 @@ export default {
         }
       });
       
-      // console.log('elementCSS', style);
+      console.log('elementCSS', style);
       return style;
     },
   },

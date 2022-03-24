@@ -1,145 +1,163 @@
 // eslint-disable-next-line
 export default `
 [
-    {
-        "componentName": "Canvas",
-        "props": {
-            "elementStyle": {
-                "margin-top": 0,
-                "margin-left": 0,
-                "margin-bottom": 0,
-                "margin-right": 0,
-                "padding-top": 30,
-                "padding-left": 30,
-                "padding-bottom": 30,
-                "padding-right": 30,
-                "width": 100,
-                "height": "auto",
-                "flex-direction": "column",
-                "justify-content": "flex-start",
-                "align-items": "flex-start",
-                "border-radius": 0,
-                "box-shadow": {
-                    "x": 0,
-                    "y": 0,
-                    "blur": 0,
-                    "spread": 0,
-                    "color": "rgba(0,0,0,0)"
-                },
-                "background-color": "rgba(0,0,0,0)",
-                "background-image": "none",
-                "background-attachment": "scroll"
-            },
-            "component": "Container"
-        },
-        "children": [
-            {
-                "componentName": "Heading",
-                "props": {
-                    "headingType": "h3",
-                    "content": "这是一个标题.",
-                    "textHref": "",
-                    "elementStyle": {
-                        "text-decoration": "none",
-                        "font-size": 18,
-                        "font-weight": "normal",
-                        "text-align": "left",
-                        "color": "rgb(0,0,0)",
-                        "margin-top": 0,
-                        "margin-left": 0,
-                        "margin-bottom": 0,
-                        "margin-right": 0,
-                        "padding-top": 0,
-                        "padding-left": 0,
-                        "padding-bottom": 0,
-                        "padding-right": 0,
-                        "text-shadow": {
-                            "x": 0,
-                            "y": 0,
-                            "blur": 0,
-                            "color": "rgba(0,0,0,0)"
-                        }
-                    }
-                },
-                "children": [],
-                "addition": {},
-                "uuid": "93ec8933-a972-4d54-9883-4969d3f3c0db"
-            },
-            {
-                "componentName": "Paragraph",
-                "props": {
-                    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                    "pHref": "https://www.baidu.com",
-                    "elementStyle": {
-                        "text-decoration": "none",
-                        "font-size": 14,
-                        "font-weight": "normal",
-                        "text-align": "left",
-                        "line-height": "1.5",
-                        "color": "rgb(0,0,0)",
-                        "margin-top": 0,
-                        "margin-left": 0,
-                        "margin-bottom": 0,
-                        "margin-right": 0,
-                        "padding-top": 0,
-                        "padding-left": 0,
-                        "padding-bottom": 0,
-                        "padding-right": 0,
-                        "text-shadow": {
-                            "x": 0,
-                            "y": 0,
-                            "blur": 0,
-                            "color": "rgba(0,0,0,0)"
-                        }
-                    }
-                },
-                "children": [],
-                "addition": {},
-                "uuid": "221bd3b5-4154-40af-9ef4-ba713cd9071c"
-            },
-            {
-                "componentName": "Table",
-                "props": {
-                    "content": {
-                        "tData": {
-                            "第一列": [
-                                "1-1",
-                                "2-1",
-                                "3-1"
-                            ],
-                            "第二列": [
-                                "1-2",
-                                "2-2",
-                                "3-2"
-                            ],
-                            "第三列": [
-                                "1-3",
-                                "2-3",
-                                "3-3"
-                            ]
-                        }
-                    },
-                    "elementStyle": {
-                        "margin-top": 0,
-                        "margin-left": 0,
-                        "margin-bottom": 0,
-                        "margin-right": 0,
-                        "border-radius": 8,
-                        "border-spacing": 1,
-                        "border-collapse": "collapse",
-                        "background": "white",
-                        "overflow": "hidden",
-                        "width": 100,
-                        "position": "relative"
-                    }
-                },
-                "children": [],
-                "addition": {},
-                "uuid": "be2841d0-d243-44e0-bd6f-348b52f4d6b4"
-            }
-        ],
-        "addition": {},
-        "uuid": "eaed1ed4-414a-41b4-8c3d-4b82adb26301"
-    }
+  {
+      "componentName": "Canvas",
+      "props": {
+          "elementStyle": {
+              "margin-top": 0,
+              "margin-left": 0,
+              "margin-bottom": 0,
+              "margin-right": 0,
+              "padding-top": 30,
+              "padding-left": 30,
+              "padding-bottom": 30,
+              "padding-right": 30,
+              "height": "auto",
+              "flex-direction": "column",
+              "justify-content": "flex-start",
+              "align-items": "flex-start",
+              "border-radius": 0,
+              "box-shadow": {
+                  "x": 0,
+                  "y": 0,
+                  "blur": 0,
+                  "spread": 0,
+                  "color": "rgba(0,0,0,0)"
+              },
+              "background-color": "rgba(0,0,0,0)",
+              "background-image": "none",
+              "background-attachment": "scroll"
+          },
+          "component": "Container"
+      },
+      "children": [
+          {
+              "componentName": "Heading",
+              "props": {
+                  "headingType": "h1",
+                  "content": "这是一个标题.",
+                  "textHref": "https://www.baidu.com",
+                  "elementStyle": {
+                      "text-decoration": "none",
+                      "font-size": 24,
+                      "font-weight": "normal",
+                      "text-align": "left",
+                      "color": "rgb(0,0,0)",
+                      "margin-top": 0,
+                      "margin-left": 0,
+                      "margin-bottom": 0,
+                      "margin-right": 0,
+                      "padding-top": 0,
+                      "padding-left": 0,
+                      "padding-bottom": 0,
+                      "padding-right": 0,
+                      "text-shadow": {
+                          "x": 0,
+                          "y": 0,
+                          "blur": 0,
+                          "color": "rgba(0,0,0,0)"
+                      }
+                  }
+              },
+              "children": [],
+              "addition": {},
+              "uuid": "ceb2a236-f3e7-427c-9169-5530e1f813fb"
+          },
+          {
+              "componentName": "Canvas",
+              "props": {
+                  "elementStyle": {
+                      "margin-top": 0,
+                      "margin-left": 0,
+                      "margin-bottom": 0,
+                      "margin-right": 0,
+                      "padding-top": 12,
+                      "padding-left": 0,
+                      "padding-bottom": 0,
+                      "padding-right": 0,
+                      "height": "auto",
+                      "flex-direction": "row",
+                      "justify-content": "flex-start",
+                      "align-items": "flex-start",
+                      "border-radius": 0,
+                      "box-shadow": {
+                          "x": 0,
+                          "y": 0,
+                          "blur": 0,
+                          "spread": 0,
+                          "color": "rgba(0,0,0,0)"
+                      },
+                      "background-color": "rgba(0,0,0,0)",
+                      "background-image": "none",
+                      "background-attachment": "scroll"
+                  },
+                  "component": "Container"
+              },
+              "children": [
+                  {
+                      "componentName": "Paragraph",
+                      "props": {
+                          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultrices non orci nec eleifend. Sed scelerisque lobortis neque eget feugiat. Curabitur ullamcorper ex at porttitor mollis. Curabitur varius lorem nisl, non egestas leo feugiat at. Curabitur volutpat sagittis arcu, ut blandit velit sagittis vel. Vivamus erat mauris, mattis a neque vel, pretium varius ipsum. Phasellus non mauris in dolor luctus suscipit vel ac massa. Sed fringilla lorem sed metus bibendum faucibus. Pellentesque ipsum mauris, auctor ut varius at, aliquam sed quam. Nullam fringilla felis at odio convallis mattis.",
+                          "pHref": "https://www.baidu.com",
+                          "elementStyle": {
+                              "text-decoration": "none",
+                              "font-size": 14,
+                              "font-weight": "normal",
+                              "text-align": "left",
+                              "line-height": "1.5",
+                              "color": "rgb(0,0,0)",
+                              "margin-top": 0,
+                              "margin-left": 0,
+                              "margin-bottom": 0,
+                              "margin-right": 0,
+                              "padding-top": 0,
+                              "padding-left": 0,
+                              "padding-bottom": 0,
+                              "padding-right": 0,
+                              "text-shadow": {
+                                  "x": 0,
+                                  "y": 0,
+                                  "blur": 0,
+                                  "color": "rgba(0,0,0,0)"
+                              }
+                          }
+                      },
+                      "children": [],
+                      "addition": {},
+                      "uuid": "7681ffe5-945f-4872-83b8-fa4222fb1289"
+                  },
+                  {
+                      "componentName": "Picture",
+                      "props": {
+                          "imageUrl": "https://emoji-1303099125.cos.ap-guangzhou.myqcloud.com/tyan2d_anim-512px-11.gif",
+                          "elementStyle": {
+                              "width": "30%",
+                              "margin-top": 0,
+                              "margin-left": 0,
+                              "margin-bottom": 0,
+                              "margin-right": 0,
+                              "border-radius": 0,
+                              "box-shadow": {
+                                  "x": 0,
+                                  "y": 0,
+                                  "blur": 0,
+                                  "spread": 0,
+                                  "color": "rgba(0,0,0,0)"
+                              }
+                          }
+                      },
+                      "children": [],
+                      "addition": {},
+                      "uuid": "a89855a0-1afd-46ee-b0ef-54e263096013"
+                  }
+              ],
+              "addition": {},
+              "uuid": "445150cb-c110-494f-bce0-b077703a44ba"
+          }
+      ],
+      "addition": {},
+      "uuid": "9a79c9f8-9db7-482b-b60c-c194e2b48788"
+  }
 ]
 `;

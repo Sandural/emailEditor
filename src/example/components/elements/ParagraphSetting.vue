@@ -16,7 +16,6 @@ export default {
       this.elementPropsSetter({ content });
     },
     updatePHref(val) {
-      console.log("phref", val);
       this.elementProps.pHref = val;
     },
   },

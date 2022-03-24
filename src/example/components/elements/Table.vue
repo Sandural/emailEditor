@@ -47,7 +47,7 @@ export default {
         "border-collapse": "collapse",
         "background": "white",
         "overflow": "hidden",
-        "width": 100,
+        "width": '100%',
         "position": "relative",
       },
     },

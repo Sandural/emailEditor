@@ -27,7 +27,6 @@ export default {
       // this.node.setProps.bind(this.node, { headingType });
     },
     updateTextHref(val) {
-      console.log("href", val);
       this.elementProps.textHref = val;
     },
   },

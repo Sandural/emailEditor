@@ -10,6 +10,7 @@ export default {
       return this.elementProps.elementStyle[name];
     },
     setStyle(name, value) {
+      console.log(name, value);
       this.elementPropsSetter({
         elementStyle: {
           ...this.elementProps.elementStyle,

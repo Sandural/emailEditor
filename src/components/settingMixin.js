@@ -6,8 +6,8 @@ export default {
   },
   computed: {
     elementPropsSetter(data) {
-      console.log('data', data);
       let setter = this.node.setProps;
+      console.log('setter', setter);
       setter = setter.bind(this.node);
       return setter;
     },

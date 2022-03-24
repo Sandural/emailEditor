@@ -1,12 +1,7 @@
 <template>
   <el-form label-position="top" size="mini" :model="elementProps">
     <el-form-item label="Width" v-if="styleExist('width')">
-      <el-slider
-        v-model="elementProps.elementStyle.width"
-        :formatTooltip="formatTooltip"
-        :max="100"
-        @input="setStyle('width', $event)"
-      ></el-slider>
+      <el-input :value="getStyle('width')" @input="setStyle('width', $event)"></el-input>
     </el-form-item>
 
     <el-form-item label="Height" v-if="styleExist('height')">

@@ -30,7 +30,6 @@ export default {
         'padding-left': 30,
         'padding-bottom': 30,
         'padding-right': 30,
-        width: 100,
         height: 'auto',
         'flex-direction': 'column',
         'justify-content': 'flex-start',
