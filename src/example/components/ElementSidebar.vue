@@ -60,6 +60,14 @@
       </Blueprint>
     </el-tooltip>
 
+    <el-tooltip effect="dark" content="分隔符" placeholder="right">
+      <Blueprint :component="ElementBlock" icon="horizontal_rule">
+        <template v-slot:blueprint>
+          <Divider />
+        </template>
+      </Blueprint>
+    </el-tooltip>
+
     <!-- <el-tooltip effect="dark" content="容器" placement="right">
       <Blueprint :component="ElementBlock" icon="view_column">
         <template v-slot:blueprint>
@@ -84,6 +92,7 @@ import Button from './elements/Button.vue';
 import Table from './elements/Table.vue';
 import List from './elements/List.vue';
 import Container from './elements/Container.vue';
+import Divider from './elements/Divider.vue';
 
 export default {
   components: {
@@ -95,7 +104,8 @@ export default {
     Heading,
     Picture,
     List,
-  },
+    Divider
+},
   inject: ['editor'],
   data() {
     return {

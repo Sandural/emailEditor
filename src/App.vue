@@ -22,6 +22,7 @@ import Picture from "./example/components/elements/Picture.vue";
 import Button from "./example/components/elements/Button.vue";
 import Table from "./example/components/elements/Table.vue";
 import List from "./example/components/elements/List.vue";
+import Divider from "./example/components/elements/Divider.vue";
 import demoData from "./example/demoData";
 
 export default {
@@ -43,7 +44,8 @@ export default {
         Picture,
         List,
         Button,
-        Table
+        Table,
+        Divider
       },
       demoData,
     };
