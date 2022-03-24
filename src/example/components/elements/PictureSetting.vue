@@ -7,6 +7,10 @@
     <el-form-item label="图片宽度">
       <el-input :value="getStyle('width')" @input="setStyle('width', $event)"></el-input>
     </el-form-item>
+
+    <el-form-item label="图片 href">
+      <el-input :value="elementProps.imgHref" @input="updateImgHref"></el-input>
+    </el-form-item>
   </el-form>
 </template>
 
@@ -15,10 +19,18 @@ import mixin from './styleSettings/mixin';
 
 export default {
   mixins: [mixin],
+  data() {
+    return {
+      imgHref: ""
+    }
+  },
   methods: {
     updateImageUrl(imageUrl) {
       this.elementPropsSetter({ imageUrl });
     },
+    updateImgHref(imgHref) {
+      this.elementPropsSetter({ imgHref });
+    }
   },
 };
 </script>

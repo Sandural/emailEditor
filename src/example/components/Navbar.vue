@@ -65,7 +65,7 @@
         <el-button
           type="text"
           @click="sendEmail"
-          style="position: absolute; right: 30px; top: 40px"
+          style="position: absolute; right: 50px; top: 10px;"
         >
           <i class="el-icon-position"></i> 发邮件
         </el-button>
@@ -221,6 +221,15 @@ export default {
             dom = document.createElement('img');
             dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
             dom.setAttribute('src', item.props.imageUrl);
+
+            let a = null;
+            if(item.props.imgHref) {
+              a = document.createElement('a');
+              a.setAttribute('href', item.props.imgHref);
+              a.setAttribute('style', 'width: 100%')
+              a.appendChild(dom);
+              dom = a
+            }
             break;
           }
 
@@ -260,6 +269,16 @@ export default {
               </tbody>
             `, { item });
             break;
+          }
+
+          case 'List': {
+              dom = document.createElement('div');
+              dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
+              dom.innerHTML = template.render(`
+                {{ each item.props.content.listData }}
+                    <div class="list">{{ $value }}</div>
+                {{ /each }}
+              `, { item })
           }
 
           default:
@@ -358,8 +377,8 @@ export default {
   position: relative;
   z-index: 100;
   display: flex;
+  align-items: center;
   height: $navbar-height;
-  line-height: $navbar-height;
   padding: 0 13px;
   background-color: white;
   box-shadow: 0 2px 3px rgba($color: #000000, $alpha: 0.03);

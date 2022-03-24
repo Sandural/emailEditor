@@ -32,10 +32,10 @@
       </Blueprint>
     </el-tooltip>
 
-    <el-tooltip effect="dark" content="走马灯" placement="right">
-      <Blueprint :component="ElementBlock" icon="view_carousel">
+    <el-tooltip effect="dark" content="动态列表" placement="right">
+      <Blueprint :component="ElementBlock" icon="format_list_bulleted">
         <template v-slot:blueprint>
-          <Carousel />
+          <List />
         </template>
       </Blueprint>
     </el-tooltip>
@@ -82,7 +82,7 @@ import Heading from './elements/Heading.vue';
 import Picture from './elements/Picture.vue';
 import Button from './elements/Button.vue';
 import Table from './elements/Table.vue';
-import Carousel from './elements/Carousel.vue';
+import List from './elements/List.vue';
 import Container from './elements/Container.vue';
 
 export default {
@@ -94,7 +94,7 @@ export default {
     Table,
     Heading,
     Picture,
-    Carousel,
+    List,
   },
   inject: ['editor'],
   data() {

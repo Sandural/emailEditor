@@ -1,7 +1,5 @@
 <template>
-<div>
-  <img class="image" :src="imageUrl" :style="elementCSS" />
-</div>
+    <img  class="image" :src="imageUrl" :style="elementCSS" />
 </template>
 
 <script>
@@ -14,13 +12,15 @@ export default {
   mixins: [elementStyleMixin],
   props: {
     imageUrl: String,
+    imgHref: String
   },
 
   craft: {
     defaultProps: {
-      imageUrl: "https://emoji-1303099125.cos.ap-guangzhou.myqcloud.com/tyan2d_anim-512px-11.gif",
+      imageUrl: "https://test-1303099125.cos.ap-guangzhou.myqcloud.com/default_picture_image.jpg",
+      imgHref: "https://www.baidu.com",
       elementStyle: {
-        "width": "30%",
+        "width": "100px",
         "margin-top": 0,
         "margin-left": 0,
         "margin-bottom": 0,

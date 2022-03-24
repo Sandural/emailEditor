@@ -30,10 +30,9 @@ import tableMixin from "./Table/tableDataSetting";
 export default {
   mixins: [mixin, tableMixin],
   computed: {
-    propsCol() {
-      // console.log('propsCol', this.elementProps.content.tData.map((v) => Object.keys(v))[0]);
-      return this.elementProps.content.tData.map((v) => Object.keys(v))[0];
-    },
+    // propsCol() {
+    //   return this.elementProps.content.tData.map((v) => Object.keys(v))[0];
+    // },
     dataSource: {
       get() {
         return JSON.stringify(this.elementProps.content.tData);
@@ -51,7 +50,7 @@ export default {
   },
   methods: {
     changeTableData(val) {
-      console.log('rock', val);
+      console.log('tableData', val);
     },
   },
 };

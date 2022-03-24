@@ -17,6 +17,14 @@ export default {
           x, y, blur, color,
         }) => `${x}px ${y}px ${blur}px ${color}`,
         'flex-shrink': (x) => x,
+        'border': (val) => {
+          if(val === 'none') {
+            return "none"
+          } else {
+            let {width, style, color} = val
+            return `${width} ${style} ${color}`
+          }
+        }
       };
 
       // console.log('this.elementStyle', this.elementStyle);

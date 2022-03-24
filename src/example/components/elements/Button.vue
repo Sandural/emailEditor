@@ -1,5 +1,4 @@
 <template>
-  <div>
     <Editor
       tag="button"
       :style="elementCSS"
@@ -7,7 +6,6 @@
       :value="content"
       :btnUrl="btnUrl"
     ></Editor>
-  </div>
 </template>
 
 <script>

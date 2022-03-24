@@ -42,13 +42,18 @@ export default {
         "margin-left": 0,
         "margin-bottom": 0,
         "margin-right": 0,
-        "border-radius": '10px',
+        // "border-radius": '10px',
         "border-spacing": 1,
         "border-collapse": "collapse",
         "background": "white",
         "overflow": "hidden",
         "width": '100%',
         "position": "relative",
+        "border": {
+          "width": "1px",
+          "style": "solid",
+          "color": "rgb(0, 0, 0)"
+        }
       },
     },
     settings: {
@@ -68,7 +73,7 @@ th {
 
 thead tr {
   height: 50px;
-  background: #ffed8660;
+  /* background: #ffed8660; */
   font-size: 16px;
 }
 tbody tr {

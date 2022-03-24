@@ -1,6 +1,5 @@
 <template>
   <component
-    style="width: 100%;"
     :is="editor.findResolver(node.componentName)"
     v-bind="node.props"
     :class="{ 'cf-node-selected': isSelected }"

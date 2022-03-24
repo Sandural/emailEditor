@@ -21,7 +21,7 @@ import Heading from "./example/components/elements/Heading.vue";
 import Picture from "./example/components/elements/Picture.vue";
 import Button from "./example/components/elements/Button.vue";
 import Table from "./example/components/elements/Table.vue";
-import Carousel from "./example/components/elements/Carousel.vue";
+import List from "./example/components/elements/List.vue";
 import demoData from "./example/demoData";
 
 export default {
@@ -41,7 +41,7 @@ export default {
         Paragraph,
         Heading,
         Picture,
-        Carousel,
+        List,
         Button,
         Table
       },
