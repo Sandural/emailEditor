@@ -58,6 +58,7 @@ export default {
       content: "这是一个标题.",
       textHref: "https://www.baidu.com",
       elementStyle: {
+        "text-decoration": "none",
         "font-size": 24,
         "font-weight": "normal",
         "text-align": "left",

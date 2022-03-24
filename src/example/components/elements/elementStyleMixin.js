@@ -17,7 +17,6 @@ export default {
           x, y, blur, color,
         }) => `${x}px ${y}px ${blur}px ${color}`,
         'width': (width) => `${width}%`,
-        'border-radius': (r) => `${r}%`,
         'flex-shrink': (x) => x,
       };
 

@@ -1,5 +1,5 @@
 <template>
-  <table>
+  <table :style="elementCSS">
     <thead>
       <tr>
         <th v-for="(key, value, index) in elementProps.content.tData" align="left">{{ value }}</th>
@@ -18,6 +18,8 @@ import Editor from "./utils/Editor.vue";
 import elementStyleMixin from "./elementStyleMixin";
 import TableSetting from "./TableSetting.vue";
 import { settingMixin } from "@";
+import Margin from "./styleSettings/Margin.vue";
+import Decoration from './styleSettings/Decoration.vue';
 
 export default {
   mixins: [elementStyleMixin, settingMixin],
@@ -30,32 +32,35 @@ export default {
     defaultProps: {
       content: {
         tData: {
-          "第一列": ["1-1", "2-1", "3-1"],
-          "第二列": ["1-2", "2-2", "3-2"],
-          "第三列": ["1-3", "2-3", "3-3"]
-        }
+          第一列: ["1-1", "2-1", "3-1"],
+          第二列: ["1-2", "2-2", "3-2"],
+          第三列: ["1-3", "2-3", "3-3"],
+        },
       },
-      elementStyle: {},
+      elementStyle: {
+        "margin-top": 0,
+        "margin-left": 0,
+        "margin-bottom": 0,
+        "margin-right": 0,
+        "border-radius": '10px',
+        "border-spacing": 1,
+        "border-collapse": "collapse",
+        "background": "white",
+        "overflow": "hidden",
+        "width": 100,
+        "position": "relative",
+      },
     },
     settings: {
       Properties: TableSetting,
+      Decoration,
+      Margin,
     },
   },
 };
 </script>
 
 <style>
-table {
-  border-spacing: 1;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 6px;
-  overflow: hidden;
-  max-width: 800px;
-  width: 100%;
-  position: relative;
-}
-
 td,
 th {
   padding-left: 8px;

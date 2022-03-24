@@ -3,7 +3,6 @@
     <el-form-item label="圆角半径" v-if="styleExist('border-radius')">
       <el-slider
         :value="getStyle('border-radius')"
-        :formatTooltip="formatTooltip"
         :max="100"
         @input="setStyle('border-radius', $event)"
       ></el-slider>

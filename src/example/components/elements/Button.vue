@@ -49,7 +49,7 @@ export default {
         border: 'none',
         color: 'rgb(0,0,0)',
         'background-color': 'rgb(255, 255, 255)',
-        'border-radius': 3,
+        'border-radius': '3px',
         'box-shadow': {
           x: 0,
           y: 0,

@@ -13,6 +13,7 @@ import Margin from './styleSettings/Margin.vue';
 import Padding from './styleSettings/Padding.vue';
 import Editor from './utils/Editor.vue';
 import elementStyleMixin from './elementStyleMixin';
+import ParagraphSettingVue from './ParagraphSetting.vue';
 
 export default {
   mixins: [elementStyleMixin],
@@ -31,7 +32,9 @@ export default {
   craft: {
     defaultProps: {
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultrices non orci nec eleifend. Sed scelerisque lobortis neque eget feugiat. Curabitur ullamcorper ex at porttitor mollis. Curabitur varius lorem nisl, non egestas leo feugiat at. Curabitur volutpat sagittis arcu, ut blandit velit sagittis vel. Vivamus erat mauris, mattis a neque vel, pretium varius ipsum. Phasellus non mauris in dolor luctus suscipit vel ac massa. Sed fringilla lorem sed metus bibendum faucibus. Pellentesque ipsum mauris, auctor ut varius at, aliquam sed quam. Nullam fringilla felis at odio convallis mattis.',
+      pHref: "https://www.baidu.com",
       elementStyle: {
+        "text-decoration": "none",
         'font-size': 14,
         'font-weight': 'normal',
         'text-align': 'left',
@@ -54,6 +57,7 @@ export default {
       },
     },
     settings: {
+      Properties: ParagraphSettingVue,
       Typography,
       Margin,
       Padding,

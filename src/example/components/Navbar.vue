@@ -163,8 +163,8 @@ export default {
         'text-shadow': ({
           x, y, blur, color,
         }) => `${x}px ${y}px ${blur}px ${color}`,
-        width: (width) => `${width}%`,
-        'border-radius': (r) => `${r}%`,
+        'width': (width) => `${width}%`,
+        'flex-shrink': (x) => x,
       };
 
       Object.entries(elementStyle).forEach(([key, value]) => {
@@ -210,7 +210,9 @@ export default {
           }
 
           case 'Paragraph': {
-            dom = document.createElement('p');
+            let tag = item.props.pHref ? 'a' : 'p';
+            dom = document.createElement(tag);
+            if(tag === 'a') {dom.setAttribute('href', item.props.pHref) }
             dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
             dom.innerText = item.props.content;
             break;
@@ -238,7 +240,7 @@ export default {
           case 'Table': {
             dom = document.createElement('table');
             dom.setAttribute('id', item.uuid);
-            
+            dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
             dom.innerHTML = template.render(`
               <thead>
                 <tr>
@@ -258,7 +260,6 @@ export default {
                 {{ /each }}
               </tbody>
             `, { item });
-            console.log('dom', dom, item);
             break;
           }
 

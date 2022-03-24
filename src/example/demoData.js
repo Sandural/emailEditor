@@ -36,13 +36,14 @@ export default `
             {
                 "componentName": "Heading",
                 "props": {
-                    "headingType": "h1",
+                    "headingType": "h3",
                     "content": "这是一个标题.",
-                    "textHref": "https://www.baidu.com",
+                    "textHref": "",
                     "elementStyle": {
-                        "font-size": 24,
+                        "text-decoration": "none",
+                        "font-size": 18,
                         "font-weight": "normal",
-                        "text-align": "center",
+                        "text-align": "left",
                         "color": "rgb(0,0,0)",
                         "margin-top": 0,
                         "margin-left": 0,
@@ -62,39 +63,83 @@ export default `
                 },
                 "children": [],
                 "addition": {},
-                "uuid": "0d8c4819-6fb2-4896-9fc8-3653a4a56b88"
+                "uuid": "93ec8933-a972-4d54-9883-4969d3f3c0db"
+            },
+            {
+                "componentName": "Paragraph",
+                "props": {
+                    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+                    "pHref": "https://www.baidu.com",
+                    "elementStyle": {
+                        "text-decoration": "none",
+                        "font-size": 14,
+                        "font-weight": "normal",
+                        "text-align": "left",
+                        "line-height": "1.5",
+                        "color": "rgb(0,0,0)",
+                        "margin-top": 0,
+                        "margin-left": 0,
+                        "margin-bottom": 0,
+                        "margin-right": 0,
+                        "padding-top": 0,
+                        "padding-left": 0,
+                        "padding-bottom": 0,
+                        "padding-right": 0,
+                        "text-shadow": {
+                            "x": 0,
+                            "y": 0,
+                            "blur": 0,
+                            "color": "rgba(0,0,0,0)"
+                        }
+                    }
+                },
+                "children": [],
+                "addition": {},
+                "uuid": "221bd3b5-4154-40af-9ef4-ba713cd9071c"
             },
             {
                 "componentName": "Table",
                 "props": {
                     "content": {
                         "tData": {
-                            "平台": [
+                            "第一列": [
                                 "1-1",
                                 "2-1",
                                 "3-1"
                             ],
-                            "测试": [
+                            "第二列": [
                                 "1-2",
                                 "2-2",
                                 "3-2"
                             ],
-                            "通过率": [
+                            "第三列": [
                                 "1-3",
                                 "2-3",
                                 "3-3"
                             ]
                         }
                     },
-                    "elementStyle": {}
+                    "elementStyle": {
+                        "margin-top": 0,
+                        "margin-left": 0,
+                        "margin-bottom": 0,
+                        "margin-right": 0,
+                        "border-radius": 8,
+                        "border-spacing": 1,
+                        "border-collapse": "collapse",
+                        "background": "white",
+                        "overflow": "hidden",
+                        "width": 100,
+                        "position": "relative"
+                    }
                 },
                 "children": [],
                 "addition": {},
-                "uuid": "6db67467-63ee-444e-95f3-4f4b005e0682"
+                "uuid": "be2841d0-d243-44e0-bd6f-348b52f4d6b4"
             }
         ],
         "addition": {},
-        "uuid": "c2d88a08-1894-44b9-9b17-ea23b91bc2ae"
+        "uuid": "eaed1ed4-414a-41b4-8c3d-4b82adb26301"
     }
 ]
 `;
