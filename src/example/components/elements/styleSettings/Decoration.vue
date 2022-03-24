@@ -1,11 +1,7 @@
 <template>
   <el-form label-position="top" size="mini" :model="elementProps">
     <el-form-item label="圆角半径" v-if="styleExist('border-radius')">
-      <!-- <el-slider
-        :value="getStyle('border-radius')"
-        :max="100"
-        @input="setStyle('border-radius', $event)"
-      ></el-slider> -->
+      <el-input :value="getStyle('border-radius')" @input="setStyle('border-radius', $event)"></el-input>
     </el-form-item>
 
     <label class="el-form-item__label" v-if="styleExist('box-shadow')">阴影</label>
