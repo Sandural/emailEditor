@@ -92,7 +92,7 @@ export default {
         "params": "124w",
         "title": "hello world",
         "imgUrl": "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png",
-        "tableData": {"第一列":["1-1","2-1","3-1"],"第二列":["1-2","2-2","3-2"],"第三列":["1-3","2-3","3-3"]}
+        "tData": {"第一列":["1-1","2-1","3-1"],"第二列":["1-2","2-2","3-2"],"第三列":["1-3","2-3","3-3"]}
       }`,
       editorOptions: {
         // 设置代码编辑器的样式
@@ -143,9 +143,9 @@ export default {
 
     applyData() {
       const code = JSON.parse(this.code);
-      // console.log("code", code);
-      // console.log('oScript.innerHTML', oScript.innerHTML);
-      const html = template('tpl', JSON.parse(this.code));
+      let htmlContent = document.getElementById('tpl').innerHTML;
+      let content= htmlContent.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      const html = template.render(content, code);
       console.log(html);
       this.preview = html;
       this.$nextTick(() => {
@@ -249,25 +249,29 @@ export default {
             dom = document.createElement('table');
             dom.setAttribute('id', item.uuid);
             dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
-            dom.innerHTML = template.render(`
-              <thead>
-                <tr>
-                  {{ each item.props.content.tData}}
-                      <th> {{$index}} </th>
-                  {{ /each }}
-                </tr>
-              </thead>
-              <tbody>
-                {{ each item.props.content.tData }}
-                  <tr>
-                    {{ set data = $value }}
-                    {{ each data }}
-                      <td>{{$value}}</td>
-                    {{ /each }}
-                  </tr>
-                {{ /each }}
-              </tbody>
-            `, { item });
+            // dom.innerHTML = template.render(`
+            //   <thead>
+            //     <tr>
+            //       {{ each item.props.content.tData}}
+            //           <th> {{$index}} </th>
+            //       {{ /each }}
+            //     </tr>
+            //   </thead>
+            //   <tbody>
+            //     {{ each item.props.content.tData }}
+            //       <tr>
+            //         {{ set data = $value }}
+            //         {{ each data }}
+            //           <td>{{$value}}</td>
+            //         {{ /each }}
+            //       </tr>
+            //     {{ /each }}
+            //   </tbody>
+            // `, { item });
+            // break;
+            let tagText = `<thead><tr>{{each tData}}<th>{{$index}}</th>{{/each}}</tr></thead><tbody>{{each tData}}<tr>{{set data=$value}}{{each data}}<td>{{$value}}</td>{{/each}}</tr>{{/each}}</tbody>`;
+            let encodeText = this.HTMLEncode(tagText);
+            dom.innerText = this.HTMLDecode(encodeText);
             break;
           }
 
@@ -293,6 +297,23 @@ export default {
 
       return pnode;
     },
+
+    HTMLEncode(html) {
+        var temp = document.createElement("div");
+        (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+        var output = temp.innerHTML;
+        temp = null;
+        return output;
+    },
+
+    HTMLDecode(text) { 
+        var temp = document.createElement("div"); 
+        temp.innerHTML = text; 
+        var output = temp.innerText || temp.textContent; 
+        temp = null; 
+        return output; 
+    },
+
 
     openPreviewDialog() {
       this.showPreviewDialog = true;
