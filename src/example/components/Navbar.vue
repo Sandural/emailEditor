@@ -87,13 +87,8 @@ export default {
       showImportDialog: false,
       importData: '',
       showPreviewDialog: false,
-      code: `{
-        "desc": "1243",
-        "params": "124w",
-        "title": "hello world",
-        "imgUrl": "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png",
-        "tData": {"第一列":["1-1","2-1","3-1"],"第二列":["1-2","2-2","3-2"],"第三列":["1-3","2-3","3-3"]}
-      }`,
+      code: '',
+      codeData: {},
       editorOptions: {
         // 设置代码编辑器的样式
         // 启用基本自动完成
@@ -246,32 +241,18 @@ export default {
           }
 
           case 'Table': {
+            console.log('进场 table');
             dom = document.createElement('table');
             dom.setAttribute('id', item.uuid);
             dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
-            // dom.innerHTML = template.render(`
-            //   <thead>
-            //     <tr>
-            //       {{ each item.props.content.tData}}
-            //           <th> {{$index}} </th>
-            //       {{ /each }}
-            //     </tr>
-            //   </thead>
-            //   <tbody>
-            //     {{ each item.props.content.tData }}
-            //       <tr>
-            //         {{ set data = $value }}
-            //         {{ each data }}
-            //           <td>{{$value}}</td>
-            //         {{ /each }}
-            //       </tr>
-            //     {{ /each }}
-            //   </tbody>
-            // `, { item });
-            // break;
-            let tagText = `<thead><tr>{{each tData}}<th>{{$index}}</th>{{/each}}</tr></thead><tbody>{{each tData}}<tr>{{set data=$value}}{{each data}}<td>{{$value}}</td>{{/each}}</tr>{{/each}}</tbody>`;
+            let field = item.props.content.tField;
+            // console.log();
+            let tagText = `<thead><tr>{{each ${field}}}<th>{{$index}}</th>{{/each}}</tr></thead><tbody>{{each ${field}}}<tr>{{set data=$value}}{{each data}}<td>{{$value}}</td>{{/each}}</tr>{{/each}}</tbody>`;
+            // console.log("tagText", tagText);
             let encodeText = this.HTMLEncode(tagText);
             dom.innerText = this.HTMLDecode(encodeText);
+            console.log("field", field);
+            this.codeData[item.props.content.tField] = item.props.content[`${field}`]
             break;
           }
 
@@ -316,7 +297,6 @@ export default {
 
 
     openPreviewDialog() {
-      this.showPreviewDialog = true;
       const parentNode = document.createElement('div');
       parentNode.setAttribute('id', 'previewDialog');
       const oScript = document.getElementById('tpl');
@@ -326,6 +306,16 @@ export default {
       this.$nextTick(() => {
         this.bindEvent();
       });
+
+      this.codeData = Object.assign({
+        "desc": "1243",
+        "params": "124w",
+        "title": "hello world",
+        "imgUrl": "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png",
+      }, this.codeData)
+
+      this.code = JSON.stringify(this.codeData);
+      this.showPreviewDialog = true;
     },
 
     bindEvent() {

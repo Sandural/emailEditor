@@ -261,6 +261,7 @@ export default `
                 "componentName": "Table",
                 "props": {
                     "content": {
+                        "tField": "tData",
                         "tData": {
                             "第一列": [
                                 "1-1",

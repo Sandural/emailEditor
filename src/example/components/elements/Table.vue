@@ -2,11 +2,11 @@
   <table :style="elementCSS">
     <thead>
       <tr>
-        <th v-for="(key, value, index) in elementProps.content.tData" align="left">{{ value }}</th>
+        <th v-for="(key, value, index) in elementProps.content[elementProps.content.tField]" align="left">{{ value }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="r in elementProps.content.tData">
+      <tr v-for="r in elementProps.content[elementProps.content.tField]">
         <td v-for="(value, index) in r" align="left">{{ value }}</td>
       </tr>
     </tbody>
@@ -31,6 +31,7 @@ export default {
   craft: {
     defaultProps: {
       content: {
+        tField: "tData",
         tData: {
           第一列: ["1-1", "2-1", "3-1"],
           第二列: ["1-2", "2-2", "3-2"],

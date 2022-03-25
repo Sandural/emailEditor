@@ -1,26 +1,21 @@
 <template>
   <el-form id="tableSetting" label-position="top" size="mini" :model="elementProps">
-    <el-form-item label="数据源">
+    <el-form-item label="显示数据源">
       <el-input
         v-model="dataSource"
-        @change="changeTableData"
+        @change="updateContent"
         type="textarea"
         autosize
-        placeholder="请输入内容">
+        placeholder="请输入内容"
+      >
       </el-input>
     </el-form-item>
-    <!-- <el-form-item label="表格列配置" class="tcard-wrapper">
-      <div v-for="(r, index) in elementProps.content.tData" class="tcard">
-        <div style="display: flex; column-gap: 10px">
-          <span style="flex-shrink: 0">列名称: </span>
-          <el-input :value="elementProps.content.tColumns[index]"></el-input>
-        </div>
-        <div style="display: flex; column-gap: 10px">
-          <span style="flex-shrink: 0">key 值:</span>
-          <el-input :value="propsCol[index]"></el-input>
-        </div>
-      </div>
-    </el-form-item> -->
+    <el-form-item label="绑定数据字段名">
+      <el-tooltip :content="bindTableName">
+        <i class="el-icon-info datainfo"></i>
+      </el-tooltip>
+      <el-input v-model="fieldName" @change="updateFieldName"></el-input>
+    </el-form-item>
   </el-form>
 </template>
 
@@ -29,29 +24,37 @@ import mixin from "./styleSettings/mixin";
 import tableMixin from "./Table/tableDataSetting";
 export default {
   mixins: [mixin, tableMixin],
-  computed: {
-    // propsCol() {
-    //   return this.elementProps.content.tData.map((v) => Object.keys(v))[0];
-    // },
-    dataSource: {
-      get() {
-        return JSON.stringify(this.elementProps.content.tData);
-      },
-      set(val) {
-        // console.log('set', val);
-        try {
-          this.elementProps.content.tData = JSON.parse(val);
-        } catch (error) {
-          console.log('error');
-        }
-        
-      }
-    }
+  data() {
+    return {
+      fieldName: "",
+      dataSource: "",
+    };
   },
-  methods: {
-    changeTableData(val) {
-      console.log('tableData', val);
+  computed: {
+    bindTableName() {
+      return `格式: {{ tableData }}`;
     },
+  },
+
+  methods: {
+    updateFieldName(val) {
+      this.$set(this.elementProps.content, 'tField', val);
+      this.$set(this.elementProps.content, val, JSON.parse(JSON.stringify(this.elementProps.content.tData)));
+    },
+
+    updateContent(val) {
+      try {
+        let field = this.elementProps.content.tField;
+        this.$set(this.elementProps.content, field, JSON.parse(val));
+      } catch (error) {
+        console.log("error", error);
+      }
+    },
+  },
+
+  created() {
+    this.fieldName = this.elementProps.content.tField;
+    this.dataSource = JSON.stringify(this.elementProps.content[this.fieldName]);
   },
 };
 </script>
@@ -75,5 +78,12 @@ export default {
 #tableSetting .el-textarea .el-textarea__inner {
   resize: none;
   height: 100px !important;
+}
+
+#tableSetting .datainfo {
+  width: 16px;
+  position: absolute;
+  top: -25px;
+  left: 100px;
 }
 </style>
