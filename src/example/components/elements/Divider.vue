@@ -23,6 +23,10 @@ export default {
         "margin-bottom": 30,
         "margin-left": 10,
         "margin-right": 10,
+        "padding-top": 10,
+        "padding-bottom": 10,
+        "padding-left": 0,
+        "padding-right": 0,
       },
     },
     settings: {

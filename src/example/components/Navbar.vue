@@ -246,9 +246,7 @@ export default {
             dom.setAttribute('id', item.uuid);
             dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
             let field = item.props.content.tField;
-            // console.log();
             let tagText = `<thead><tr>{{each ${field}}}<th>{{$index}}</th>{{/each}}</tr></thead><tbody>{{each ${field}}}<tr>{{set data=$value}}{{each data}}<td>{{$value}}</td>{{/each}}</tr>{{/each}}</tbody>`;
-            // console.log("tagText", tagText);
             let encodeText = this.HTMLEncode(tagText);
             dom.innerText = this.HTMLDecode(encodeText);
             console.log("field", field);
@@ -257,17 +255,18 @@ export default {
           }
 
           case 'List': {
-              dom = document.createElement('div');
+              dom = document.createElement('ul');
               dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
-              dom.innerHTML = template.render(`
-                {{ each item.props.content.listData }}
-                    <div class="list">{{ $value }}</div>
-                {{ /each }}
-              `, { item })
+              item.props.content.listData.forEach(v => {
+                let li = document.createElement('li');
+                li.innerHTML = v
+                dom.appendChild(li)
+              })
           }
 
-          default:
+          default: {
             break;
+          }
         }
         // console.dir(dom)
         pnode.appendChild(dom);
@@ -295,6 +294,18 @@ export default {
         return output; 
     },
 
+
+    loadStyleString(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+          style.appendChild(document.createTextNode(css));
+      } catch(ex) {
+          style.styleSheet.cssText = css;
+      }
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(style);
+    },
 
     openPreviewDialog() {
       const parentNode = document.createElement('div');

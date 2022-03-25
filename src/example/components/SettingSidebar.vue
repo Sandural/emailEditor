@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar" :class="{ disable: !this.editor.enabled }">
     <div class="content" :class="{ 'has-actions': showActions }">
-      <el-collapse v-if="settingComponents">
+      <el-collapse v-if="settingComp">
         <el-collapse-item
-          v-for="(component, name) in settingComponents"
+          v-for="(component, name) in settingComp"
           :key="name"
           :title="nameMap[name]"
           :name="name"
@@ -40,8 +40,20 @@ export default {
         Properties: '属性',
         Typography: '排版',
       },
+      settingComp: {},
     };
   },
+
+  watch: {
+    settingComponents: {
+      handler(newVal) {
+        console.log("newVal", newVal);
+        this.settingComp = newVal
+      },
+      immediate: true
+    }
+  },
+
   computed: {
     selectedNode() {
       return this.editor.selectedNode;

@@ -21,9 +21,9 @@
 
 <script>
 import mixin from "./styleSettings/mixin";
-import tableMixin from "./Table/tableDataSetting";
+// import tableMixin from "./Table/tableDataSetting";
 export default {
-  mixins: [mixin, tableMixin],
+  mixins: [mixin],
   data() {
     return {
       fieldName: "",
@@ -34,6 +34,13 @@ export default {
     bindTableName() {
       return `格式: {{ tableData }}`;
     },
+  },
+
+  watch: {
+    fieldName(v) {
+      console.log('name', v);
+      this.dataSource = JSON.stringify(this.elementProps.content[v]);
+    }
   },
 
   methods: {
@@ -53,6 +60,7 @@ export default {
   },
 
   created() {
+    console.log('this.fieldName', this.fieldName);
     this.fieldName = this.elementProps.content.tField;
     this.dataSource = JSON.stringify(this.elementProps.content[this.fieldName]);
   },

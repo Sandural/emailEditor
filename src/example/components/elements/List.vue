@@ -1,8 +1,8 @@
 <template>
     <div>
-      <div
+      <li
         :style="elementCSS" 
-        class="list" v-for="item in elementProps.content.listData">{{ item }}</div>
+        class="list" v-for="item in elementProps.content.listData">{{ item }}</li>
     </div>
 </template>
 
@@ -32,8 +32,6 @@ export default {
 
 <style>
 .list::before {
-  content: "👉";
-  /* font-size: 20px; */
   font-weight: 700;
   margin-right: 10px;
 }
