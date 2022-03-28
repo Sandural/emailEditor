@@ -13,7 +13,7 @@
           <el-button @click="updateTableData">更新数据</el-button>
         </div>
         <div v-for="(item, index) in tableData" class="tcard">
-          <i class="el-icon-delete deleteColumn"></i>
+          <i class="el-icon-delete deleteColumn" @click="deleteColumn(index)"></i>
           <div style="display: flex; column-gap: 10px">
             <span style="flex-shrink: 0">列名称: </span>
             <el-input :value="item.name" @input="setColumnName($event, index)"></el-input>
@@ -26,11 +26,19 @@
       </el-form-item>
     </el-form>
 
-    <el-button type="warning" plain size="mini" style="width: 100%;">增加列</el-button>
+    <el-button type="warning" plain size="mini" style="width: 100%" @click="addColumn"
+      >增加列</el-button
+    >
 
     <el-dialog :visible.sync="tableDataDialogVisible">
-      <div style="font-weight: 700; position: absolute; top:20px;">{{fieldName}}</div>
-      <el-button style="position: absolute; top: 18px; right: 60px" type="plain" size="mini" @click="saveACE">保存</el-button>
+      <div style="font-weight: 700; position: absolute; top: 20px">{{ fieldName }}</div>
+      <el-button
+        style="position: absolute; top: 18px; right: 60px"
+        type="plain"
+        size="mini"
+        @click="saveACE"
+        >保存</el-button
+      >
       <div style="height: 500px" id="ace-62e3">
         <ACEEDITOR
           v-model="code"
@@ -64,7 +72,7 @@ export default {
   computed: {
     bindTableName() {
       return `格式: {{ tableData }}`;
-    }
+    },
   },
 
   watch: {
@@ -75,13 +83,7 @@ export default {
           tField: v,
           [v]: JSON.parse(JSON.stringify(oldData)),
         };
-        this.tableData = [];
-        this.elementProps.content[this.fieldName].forEach((v) => {
-          this.tableData.push({
-            name: v.name,
-            data: JSON.stringify(v.data),
-          });
-        });
+        this.updateTableDataByProps();
       }
     },
   },
@@ -103,7 +105,7 @@ export default {
           data: JSON.parse(v.data),
         });
       });
-      this.$message({ type: "success", message: "更新成功!" })
+      this.$message({ type: "success", message: "更新成功!" });
     },
 
     lookTableData() {
@@ -114,17 +116,42 @@ export default {
     saveACE() {
       try {
         this.elementProps.content[this.fieldName] = JSON.parse(this.code);
-        this.tableData = [];
-        this.elementProps.content[this.fieldName].forEach((v) => {
-          this.tableData.push({
-            name: v.name,
-            data: JSON.stringify(v.data),
-          });
-        });
+        this.updateTableDataByProps();
       } catch (e) {
-        this.$message({type: 'error', message: "请检查下语法问题!"})
+        this.$message({ type: "error", message: "请检查下语法问题!" });
       }
-      
+    },
+
+    addColumn() {
+      let temp = [...Array(this.tableData.length + 1).keys()].map((v) => v + 1);
+      let tempData = this.elementProps.content[this.fieldName];
+      tempData.forEach((v, index) => {
+        v.data.push(`${this.tableData.length + 1}-${temp[index]}`);
+      });
+      tempData.push({
+        name: `第${this.tableData.length + 1}列`,
+        data: temp.map((v) => `${v}-${this.tableData.length + 1}`),
+      });
+      this.updateTableDataByProps();
+    },
+
+    deleteColumn(idx) {
+      let tempData = this.elementProps.content[this.fieldName];
+      tempData.splice(idx, 1);
+      tempData.forEach((v, index) => {
+        v.data.splice(idx, 1)
+      })
+      this.updateTableDataByProps();
+    },
+
+    updateTableDataByProps() {
+      this.tableData = [];
+      this.elementProps.content[this.fieldName].forEach((v) => {
+        this.tableData.push({
+          name: v.name,
+          data: JSON.stringify(v.data),
+        });
+      });
     },
 
     editorInit(editor) {
@@ -183,7 +210,6 @@ export default {
   color: red;
 }
 
-
 #tableSetting .el-textarea .el-textarea__inner {
   resize: none;
   height: 100px !important;
@@ -200,7 +226,8 @@ export default {
   height: 100%;
 }
 
-#tableSetting .el-form-item--mini.el-form-item, .el-form-item--small.el-form-item {
+#tableSetting .el-form-item--mini.el-form-item,
+.el-form-item--small.el-form-item {
   margin-bottom: 0;
 }
 </style>

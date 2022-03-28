@@ -39,15 +39,15 @@ export default {
         tField: "tData",
         tData: [
           {
-            name: "第一列",
+            name: "第1列",
             data: ["1-1", "2-1", "3-1"],
           },
           {
-            name: "第二列",
+            name: "第2列",
             data: ["1-2", "2-2", "3-2"]
           },
           {
-            name: "第三列",
+            name: "第3列",
             data: ["1-3", "2-3", "3-3"],
           }
         ]

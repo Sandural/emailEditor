@@ -245,15 +245,13 @@ export default {
           }
 
           case 'Table': {
-            console.log('进场 table');
             dom = document.createElement('table');
             dom.setAttribute('id', item.uuid);
             dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
             let field = item.props.content.tField;
-            let tagText = `<thead><tr>{{each ${field}}}<th>{{$index}}</th>{{/each}}</tr></thead><tbody>{{each ${field}}}<tr>{{set data=$value}}{{each data}}<td>{{$value}}</td>{{/each}}</tr>{{/each}}</tbody>`;
+            let tagText = `<thead><tr>{{each ${field}}}<th>{{$value.name}}</th>{{/each}}</tr></thead><tbody>{{each ${field}}}<tr>{{set data=$value.data}}{{each data}}<td>{{$value}}</td>{{/each}}</tr>{{/each}}</tbody>`;
             let encodeText = this.HTMLEncode(tagText);
             dom.innerText = this.HTMLDecode(encodeText);
-            console.log("field", field);
             this.codeData[item.props.content.tField] = item.props.content[`${field}`]
             break;
           }
@@ -333,7 +331,7 @@ export default {
         "imgUrl": "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png",
       }, this.codeData)
 
-      this.code = JSON.stringify(this.codeData);
+      this.code = JSON.stringify(this.codeData, null, 2);
       this.showPreviewDialog = true;
     },
 
