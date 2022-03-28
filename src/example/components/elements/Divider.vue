@@ -28,6 +28,7 @@ export default {
         "padding-left": 0,
         "padding-right": 0,
       },
+      parentStyle: {},
     },
     settings: {
       Margin,

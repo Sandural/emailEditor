@@ -1,6 +1,6 @@
 <template>
   <el-form label-position="top" size="mini" :model="elementProps">
-    <el-form-item label="字体大小" v-if="styleExist('font-size')">
+    <el-form-item label="文字大小" v-if="styleExist('font-size')">
       <el-slider :value="getStyle('font-size')" @input="setStyle('font-size', $event)"></el-slider>
     </el-form-item>
 
@@ -9,10 +9,20 @@
         <el-radio-button label="left"></el-radio-button>
         <el-radio-button label="center"></el-radio-button>
         <el-radio-button label="right"></el-radio-button>
+        <el-radio-button label="justify"></el-radio-button>
       </el-radio-group>
     </el-form-item>
 
-    <el-form-item label="字体粗细" v-if="styleExist('font-weight')">
+    <el-form-item label="对齐" v-if="pStyleExist('text-align')">
+      <el-radio-group :value="getPStyle('text-align')" @input="setPStyle('text-align', $event)">
+        <el-radio-button label="left"></el-radio-button>
+        <el-radio-button label="center"></el-radio-button>
+        <el-radio-button label="right"></el-radio-button>
+        <el-radio-button label="justify"></el-radio-button>
+      </el-radio-group>
+    </el-form-item>
+
+    <el-form-item label="文字粗细" v-if="styleExist('font-weight')">
       <el-radio-group :value="getStyle('font-weight')" @input="setStyle('font-weight', $event)">
         <el-radio-button label="lighter">lighter</el-radio-button>
         <el-radio-button label="normal">normal</el-radio-button>
@@ -28,7 +38,7 @@
       </el-radio-group>
     </el-form-item>
 
-    <el-form-item label="字体颜色" v-if="styleExist('color')">
+    <el-form-item label="文字颜色" v-if="styleExist('color')">
       <el-color-picker
         show-alpha
         :value="getStyle('color')"

@@ -1,4 +1,5 @@
 <template>
+  <div :style="pElementCSS">
     <Editor
       tag="button"
       :style="elementCSS"
@@ -6,6 +7,7 @@
       :value="content"
       :btnUrl="btnUrl"
     ></Editor>
+  </div>
 </template>
 
 <script>
@@ -57,6 +59,10 @@ export default {
           spread: 0,
           color: "rgba(0,0,0,0)",
         },
+      },
+      parentStyle: {
+        width: "100%",
+        "text-align": "center",
       },
     },
     settings: {

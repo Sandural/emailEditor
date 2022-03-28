@@ -1,9 +1,8 @@
 <template>
-  <div>
+  <div style="width: 100%;" :style="elementCSS">
     <Editor
       v-if="node.props.textHref"
       tag="a"
-      :style="elementCSS"
       :value="content"
       @input="updateContent"
     >
@@ -12,7 +11,6 @@
       v-else
       :tag="headingType"
       class="heading"
-      :style="elementCSS"
       :value="content"
       @input="updateContent"
     ></Editor>
@@ -78,6 +76,7 @@ export default {
           color: "rgba(0,0,0,0)",
         },
       },
+      parentStyle: {},
     },
     settings: {
       Properties: HeadingSetting,

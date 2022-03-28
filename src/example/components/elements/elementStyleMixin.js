@@ -1,6 +1,7 @@
 export default {
   props: {
     elementStyle: Object,
+    parentStyle: Object
   },
   computed: {
     elementCSS() {
@@ -28,7 +29,6 @@ export default {
       };
 
       // console.log('this.elementStyle', this.elementStyle);
-      
       Object.entries(this.elementStyle).forEach(([key, value]) => {
         if (styleResolverMap[key]) {
           style[key] = styleResolverMap[key](value);
@@ -39,8 +39,21 @@ export default {
         }
       });
       
-      console.log('elementCSS', style);
+      
       return style;
     },
+
+    pElementCSS() {
+      let style = {}
+      Object.entries(this.parentStyle).forEach(([key, value]) => {
+        if (typeof value === 'number') {
+          style[key] = `${value}px`;
+        } else {
+          style[key] = value;
+        }
+      });
+      console.log('pElementCSS', style);
+      return style;
+    }
   },
 };

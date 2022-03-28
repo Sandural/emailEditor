@@ -46,6 +46,7 @@ export default {
         'background-image': 'none',
         'background-attachment': 'scroll',
       },
+      parentStyle: {},
     },
     settings: {
       Dimensions,

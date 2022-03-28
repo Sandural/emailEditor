@@ -56,6 +56,7 @@ export default {
           "color": "rgb(0, 0, 0)"
         }
       },
+      parentStyle: {},
     },
     settings: {
       Properties: TableSetting,

@@ -229,14 +229,18 @@ export default {
           }
 
           case 'Button': {
-            dom = document.createElement('button');
-            dom.setAttribute(
+            dom = document.createElement('div');
+            dom.setAttribute('style', this.handleElementStyle(item.props.parentStyle))
+
+            let cDom = document.createElement('button');
+            cDom.setAttribute(
               'style',
               `${this.handleElementStyle(item.props.elementStyle)}cursor: pointer;`,
             );
-            dom.setAttribute('class', 'clickBtn');
-            dom.setAttribute('url', item.props.btnUrl);
-            dom.innerHTML = item.props.content;
+            cDom.setAttribute('class', 'clickBtn');
+            cDom.setAttribute('url', item.props.btnUrl);
+            cDom.innerHTML = item.props.content;
+            dom.appendChild(cDom);
             break;
           }
 
