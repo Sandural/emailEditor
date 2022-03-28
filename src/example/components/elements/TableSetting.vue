@@ -14,7 +14,21 @@
       <el-tooltip :content="bindTableName">
         <i class="el-icon-info datainfo"></i>
       </el-tooltip>
-      <el-input v-model="fieldName" @change="updateFieldName"></el-input>
+      <el-input v-model="fieldName"></el-input>
+    </el-form-item>
+
+    <el-form-item label="表格列配置" class="tcard-wrapper">
+      <div v-for="(item, index) in tableData" class="tcard">
+        {{ item }}
+        <div style="display: flex; column-gap: 10px">
+          <span style="flex-shrink: 0">列名称: </span>
+          <el-input :value="item.prop" @input="setColumnName($event, index)"></el-input>
+        </div>
+        <div style="display: flex; column-gap: 10px">
+          <span style="flex-shrink: 0">key 值:</span>
+          <el-input :value="item.data" @input="setColumnData($event, index)"></el-input>
+        </div>
+      </div>
     </el-form-item>
   </el-form>
 </template>
@@ -28,6 +42,7 @@ export default {
     return {
       fieldName: "",
       dataSource: "",
+      tableData: [],
     };
   },
   computed: {
@@ -37,19 +52,27 @@ export default {
   },
 
   watch: {
-    fieldName(v) {
-      console.log('name', v);
-      this.dataSource = JSON.stringify(this.elementProps.content[v]);
-    }
+    fieldName(v, oldV) {
+      if (oldV) {
+        let oldData = this.elementProps.content[oldV];
+        this.elementProps.content = {
+          tField: v,
+          [v]: JSON.parse(JSON.stringify(oldData)),
+        };
+        this.dataSource = JSON.stringify(this.elementProps.content[v]);
+        this.tableData = [];
+        this.elementProps.content[this.fieldName].forEach((v) => {
+          this.tableData.push({
+            prop: v.prop,
+            data: JSON.stringify(this.elementProps.content[this.fieldName][v.data]),
+          });
+        });
+      }
+    },
   },
 
   methods: {
-    updateFieldName(val) {
-      this.$set(this.elementProps.content, 'tField', val);
-      this.$set(this.elementProps.content, val, JSON.parse(JSON.stringify(this.elementProps.content.tData)));
-    },
-
-    updateContent(val) {
+    updateContent(key, value) {
       try {
         let field = this.elementProps.content.tField;
         this.$set(this.elementProps.content, field, JSON.parse(val));
@@ -57,12 +80,28 @@ export default {
         console.log("error", error);
       }
     },
+    setColumnName(val, index) {
+      // 更新当前输入框
+      this.tableData[index].prop = val;
+      let field = this.elementProps.content.tField;
+      let data = this.elementProps.content[field];
+    },
+
+    setColumnData(val, index) {
+      this.tableData[index].data = val;
+    },
   },
 
   created() {
-    console.log('this.fieldName', this.fieldName);
     this.fieldName = this.elementProps.content.tField;
     this.dataSource = JSON.stringify(this.elementProps.content[this.fieldName]);
+    this.tableData = [];
+    this.elementProps.content[this.fieldName].forEach((v) => {
+      this.tableData.push({
+        prop: v.prop,
+        data: JSON.stringify(this.elementProps.content[this.fieldName][v.data]),
+      });
+    });
   },
 };
 </script>

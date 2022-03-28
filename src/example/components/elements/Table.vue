@@ -2,11 +2,16 @@
   <table :style="elementCSS">
     <thead>
       <tr>
-        <th v-for="(key, value, index) in elementProps.content[elementProps.content.tField]" align="left">{{ value }}</th>
+        <th
+          v-for="(key, index) in elementProps.content[elementProps.content.tField].map(v => v.name)"
+          align="left"
+        >
+          {{ key }}
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="r in elementProps.content[elementProps.content.tField]">
+      <tr v-for="r in elementProps.content[elementProps.content.tField].map(v => v.data)">
         <td v-for="(value, index) in r" align="left">{{ value }}</td>
       </tr>
     </tbody>
@@ -32,11 +37,20 @@ export default {
     defaultProps: {
       content: {
         tField: "tData",
-        tData: {
-          第一列: ["1-1", "2-1", "3-1"],
-          第二列: ["1-2", "2-2", "3-2"],
-          第三列: ["1-3", "2-3", "3-3"],
-        },
+        tData: [
+          {
+            name: "第一列",
+            data: ["1-1", "2-1", "3-1"],
+          },
+          {
+            name: "第二列",
+            data: ["1-2", "2-2", "3-2"]
+          },
+          {
+            name: "第三列",
+            data: ["1-3", "2-3", "3-3"],
+          }
+        ]
       },
       elementStyle: {
         "margin-top": 0,
