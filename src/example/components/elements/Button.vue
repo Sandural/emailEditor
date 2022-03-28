@@ -27,10 +27,7 @@ export default {
   methods: {
     updateContent(content) {
       this.node.setProps({ content });
-    },
-    test() {
-      console.log("test");
-    },
+    }
   },
   craft: {
     defaultProps: {

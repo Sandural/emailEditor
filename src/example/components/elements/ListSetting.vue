@@ -1,7 +1,6 @@
 <template>
   <el-form label-position="top" size="mini" :model="elementProps">
     <el-form-item label="数据源">
-      <!-- <el-input :value="elementProps.btnUrl" @input="updateButtonUrl" /> -->
       <el-input
         v-model="dataSource"
         @change="changeListData"

@@ -70,7 +70,7 @@ export default {
   background-size: cover;
 
   &.outline {
-    outline: 1px dashed rgb(22, 170, 238);
+    // outline: 1px dashed rgb(22, 170, 238);
   }
 }
 </style>

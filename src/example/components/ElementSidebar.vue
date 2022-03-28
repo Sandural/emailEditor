@@ -68,6 +68,14 @@
       </Blueprint>
     </el-tooltip>
 
+    <el-tooltip effect="dark" content="图表" placeholder="right">
+      <Blueprint :component="ElementBlock" icon="insights">
+        <template v-slot:blueprint>
+          <Charts />
+        </template>
+      </Blueprint>
+    </el-tooltip>
+
     <!-- <el-tooltip effect="dark" content="容器" placement="right">
       <Blueprint :component="ElementBlock" icon="view_column">
         <template v-slot:blueprint>
@@ -89,6 +97,7 @@ import Paragraph from './elements/Paragraph.vue';
 import Heading from './elements/Heading.vue';
 import Picture from './elements/Picture.vue';
 import Button from './elements/Button.vue';
+import Charts from './elements/Charts.vue';
 import Table from './elements/Table.vue';
 import List from './elements/List.vue';
 import Container from './elements/Container.vue';
@@ -100,6 +109,7 @@ export default {
     Canvas,
     Paragraph,
     Button,
+    Charts,
     Table,
     Heading,
     Picture,

@@ -20,6 +20,7 @@ import Paragraph from "./example/components/elements/Paragraph.vue";
 import Heading from "./example/components/elements/Heading.vue";
 import Picture from "./example/components/elements/Picture.vue";
 import Button from "./example/components/elements/Button.vue";
+import Charts from "./example/components/elements/Charts.vue";
 import Table from "./example/components/elements/Table.vue";
 import List from "./example/components/elements/List.vue";
 import Divider from "./example/components/elements/Divider.vue";
@@ -44,6 +45,7 @@ export default {
         Picture,
         List,
         Button,
+        Charts,
         Table,
         Divider
       },

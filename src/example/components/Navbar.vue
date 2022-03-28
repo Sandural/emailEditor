@@ -268,6 +268,10 @@ export default {
               })
           }
 
+          case 'Charts': {
+            break
+          }
+
           default: {
             break;
           }
