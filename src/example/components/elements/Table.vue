@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <tr v-for="r in elementProps.content[elementProps.content.tField].map(v => v.data)">
-        <td v-for="(value, index) in r" align="left">{{ value }}</td>
+        <td v-for="(value, index) in r" align="left" v-html="value"></td>
       </tr>
     </tbody>
   </table>
