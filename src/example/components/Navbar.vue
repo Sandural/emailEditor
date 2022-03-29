@@ -220,19 +220,21 @@ export default {
           }
 
           case "Picture": {
-            console.log('Picture');
             dom = document.createElement("img");
             dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
-            dom.setAttribute("src", item.props.imageUrl);
+            let field = item.props.content.tField;
+            dom.setAttribute("src", `{{${field}.imageUrl}}`);
 
             let a = null;
             if (item.props.imgHref) {
               a = document.createElement("a");
-              a.setAttribute("href", item.props.imgHref);
+              a.setAttribute("href", item.props.content[field].imgHref);
               a.setAttribute("style", "width: 100%");
               a.appendChild(dom);
               dom = a;
             }
+
+            this.codeData[field] = item.props.content[field];
             break;
           }
 
@@ -260,12 +262,12 @@ export default {
             let tagText = `<thead><tr>{{each ${field}}}<th align='center'>{{$value.name}}</th>{{/each}}</tr></thead><tbody>{{each ${field}}}<tr>{{set data=$value.data}}{{each data}}<td align='center'>{{$value}}</td>{{/each}}</tr>{{/each}}</tbody>`;
             let encodeText = this.HTMLEncode(tagText);
             dom.innerText = this.HTMLDecode(encodeText);
-            this.codeData[item.props.content.tField] = item.props.content[`${field}`];
+            this.codeData[field] = item.props.content[field];
             break;
           }
 
           case "List": {
-            console.log('list');
+            console.log("list");
             dom = document.createElement("ul");
             dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
             let field = item.props.content.tField;
@@ -280,14 +282,14 @@ export default {
           }
 
           case "Charts": {
-            console.log('chart');
-            dom = document.createElement('img');
-            dom.setAttribute('src', item.props.imgUrl);
+            console.log("chart");
+            dom = document.createElement("img");
+            dom.setAttribute("src", item.props.imgUrl);
             break;
           }
 
           case "Divider": {
-            dom = document.createElement('div');
+            dom = document.createElement("div");
             dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
             break;
           }
@@ -350,7 +352,6 @@ export default {
           desc: "1243",
           params: "124w",
           title: "hello world",
-          imgUrl: "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png",
         },
         this.codeData
       );

@@ -1,5 +1,5 @@
 <template>
-    <img  class="image" :src="imageUrl" :style="elementCSS" />
+  <img class="image" :src="elementProps.content[elementProps.content.tField].imageUrl" :style="elementCSS" />
 </template>
 
 <script>
@@ -7,20 +7,23 @@ import PictureSetting from "./PictureSetting.vue";
 import Margin from "./styleSettings/Margin.vue";
 import Decoration from "./styleSettings/Decoration.vue";
 import elementStyleMixin from "./elementStyleMixin";
+import mixin from "./styleSettings/mixin";
 
 export default {
-  mixins: [elementStyleMixin],
-  props: {
-    imageUrl: String,
-    imgHref: String
-  },
-
+  mixins: [elementStyleMixin, mixin],
+  inject: ["node"],
   craft: {
     defaultProps: {
-      imageUrl: "https://test-1303099125.cos.ap-guangzhou.myqcloud.com/default_picture_image.jpg",
-      imgHref: "https://www.baidu.com",
+      content: {
+        tField: "imgData",
+        imgData: {
+          imageUrl:
+            "https://test-1303099125.cos.ap-guangzhou.myqcloud.com/default_picture_image.jpg",
+          imgHref: "https://www.baidu.com",
+        },
+      },
       elementStyle: {
-        "width": "100px",
+        width: "300px",
         "margin-top": 0,
         "margin-left": 0,
         "margin-bottom": 0,
