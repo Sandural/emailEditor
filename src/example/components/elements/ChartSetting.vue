@@ -1,7 +1,10 @@
 <template>
   <div>
     <el-form id="chartSetting" label-position="top" size="mini" :model="elementProps">
-      <el-form-item label="数据">
+      <el-form-item label="字段名称">
+        <el-input v-model="fieldName"></el-input>
+      </el-form-item>
+      <el-form-item label="option 数据">
         <el-button type="primary" plain size="mini" @click="openChartData">查看数据</el-button>
       </el-form-item>
     </el-form>
@@ -38,28 +41,49 @@ export default {
       chartDialogVisible: false,
       code: "",
       editorOptions: {},
+      fieldName: "",
     };
+  },
+
+  watch: {
+    fieldName(v, oldV) {
+      if (oldV) {
+        let oldData = this.elementProps.content[oldV];
+        let oldDataJSON = JSON.parse(JSON.stringify(oldData));
+        this.elementProps.content = {
+          tField: v,
+          [v]: {
+            option: oldDataJSON["option"],
+            imgUrl: oldDataJSON["imgUrl"],
+          },
+        };
+        console.log("this.elementProps.content", this.elementProps.content);
+      }
+
+      // this.updateTableDataByProps();
+    },
   },
 
   methods: {
     openChartData() {
-      this.code = JSON.stringify(this.elementProps.option, null, 2);
+      this.code = JSON.stringify(this.elementProps.content[this.fieldName].option, null, 2);
       this.chartDialogVisible = true;
     },
 
     saveChartACE() {
-      this.elementProps.option = JSON.parse(this.code);
-      axios.post("/api/chart/getChartImage", this.elementProps.option).then((res) => {
-        console.log("cate", res);
-        let data = res.data;
-        if (data.code === 0) {
-          this.elementPropsSetter({ imgUrl: data.data });
-        }
-      });
+      this.elementProps.content[this.fieldName].option = JSON.parse(this.code);
+      axios
+        .post("/api/chart/getChartImage", this.elementProps.content[this.fieldName].option)
+        .then((res) => {
+          let data = res.data;
+          if (data.code === 0) {
+            this.$set(this.elementProps.content[this.fieldName], "imgUrl", data.data);
+          }
+        });
     },
 
     openHighchart() {
-      window.open('https://www.highcharts.com/', '_blank');
+      window.open("https://www.highcharts.com/", "_blank");
     },
 
     editorInit(editor) {
@@ -78,7 +102,8 @@ export default {
   },
 
   created() {
-    this.code = JSON.stringify(this.elementProps.option, null, 2);
+    this.fieldName = this.elementProps.content.tField;
+    this.code = JSON.stringify(this.elementProps.content[this.fieldName].option, null, 2);
   },
 };
 </script>

@@ -108,6 +108,7 @@ export default {
       preview: "",
       receivers: ["v_mningchen"],
       title: "自动化 demo",
+      // chartList: [],
     };
   },
   computed: {
@@ -137,7 +138,24 @@ export default {
         });
     },
 
-    applyData() {
+    // requestChart(content) {
+    //   axios.post("/api/chart/getChartImage", content[content.tField].option).then((res) => {
+    //     let data = res.data;
+    //     if (data.code === 0) {
+    //       // this.codeData[content.tField]
+    //     }
+    //   });
+    // },
+
+    async applyData() {
+      // this.collectChart();
+      // let tasks = [];
+      // if(this.chartList.length) {
+      //   this.chartList.forEach((f) => tasks.push(this.requestChart(f)));
+      //   const chartDataList = await Promise.all(tasks);
+      //   console.log("chartDataList", chartDataList);
+      // }
+      
       const code = JSON.parse(this.code);
       let htmlContent = document.getElementById("tpl").innerHTML;
       let content = htmlContent
@@ -153,6 +171,23 @@ export default {
         this.bindEvent();
       });
     },
+
+    // 收集 Chart
+    // collectChart() {
+    //   this.chartList = [];
+    //   for (const key in this.codeData) {
+    //     if (Object.prototype.toString.call(this.codeData[key]) === "[object Object]") {
+    //       console.log('key', this.codeData[key]);
+    //       const { type = "" } = this.codeData[key];
+    //       if (type && type === "chart-8d88") {
+    //         this.chartList.push({
+    //           tField: key,
+    //           [key]: this.codeData[key],
+    //         });
+    //       }
+    //     }
+    //   }
+    // },
 
     handleElementStyle(elementStyle) {
       const style = {};
@@ -183,13 +218,13 @@ export default {
     },
 
     handleText(content) {
-      let re = /{{(.*?)}}/g
+      let re = /{{(.*?)}}/g;
       let r = "";
       let fields = [];
-      while(r = re.exec(content)) {
-        fields.push(r[1].trim())
+      while ((r = re.exec(content))) {
+        fields.push(r[1].trim());
       }
-      fields.forEach(v => this.codeData[v] = "");
+      fields.forEach((v) => (this.codeData[v] = ""));
     },
 
     createNode(pnode, arr) {
@@ -294,9 +329,13 @@ export default {
           }
 
           case "Charts": {
-            console.log("chart");
             dom = document.createElement("img");
-            dom.setAttribute("src", item.props.imgUrl);
+            let field = item.props.content.tField;
+            dom.setAttribute("src", item.props.content[field].imgUrl);
+            // this.codeData[field] = {
+            //   option: item.props.content[field].option,
+            //   type: "chart-8d88",
+            // };
             break;
           }
 
@@ -359,7 +398,7 @@ export default {
         this.bindEvent();
       });
 
-      this.codeData = Object.assign({},this.codeData);
+      this.codeData = Object.assign({}, this.codeData);
 
       this.code = JSON.stringify(this.codeData, null, 2);
       this.showPreviewDialog = true;

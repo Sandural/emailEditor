@@ -1,5 +1,8 @@
 <template>
   <el-form label-position="top" size="mini" :model="elementProps">
+    <el-form-item label="宽度">
+      <el-input :value="getStyle('width')" @input="setStyle('width', $event)"></el-input>
+    </el-form-item>
     <el-form-item label="跳转地址">
       <el-input :value="elementProps.btnUrl" @input="updateButtonUrl" />
     </el-form-item>
@@ -7,7 +10,7 @@
 </template>
 
 <script>
-import mixin from './styleSettings/mixin';
+import mixin from "./styleSettings/mixin";
 
 export default {
   mixins: [mixin],
