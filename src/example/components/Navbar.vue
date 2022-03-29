@@ -65,7 +65,7 @@
         <el-button
           type="text"
           @click="sendEmail"
-          style="position: absolute; right: 50px; top: 10px;"
+          style="position: absolute; right: 50px; top: 10px"
         >
           <i class="el-icon-position"></i> 发邮件
         </el-button>
@@ -75,19 +75,19 @@
 </template>
 
 <script>
-import ACEEDITOR from 'vue2-ace-editor';
-import template from '../template-web.js';
+import ACEEDITOR from "vue2-ace-editor";
+import template from "../template-web.js";
 
 export default {
-  inject: ['editor'],
+  inject: ["editor"],
   components: { ACEEDITOR },
   data() {
     return {
       showExportDialog: false,
       showImportDialog: false,
-      importData: '',
+      importData: "",
       showPreviewDialog: false,
-      code: '',
+      code: "",
       codeData: {},
       editorOptions: {
         // 设置代码编辑器的样式
@@ -104,9 +104,9 @@ export default {
         // 去除编辑器里的竖线
         showPrintMargin: false,
       },
-      preview: '',
-      receivers: ['v_mningchen'],
-      title: '自动化 demo',
+      preview: "",
+      receivers: ["v_mningchen"],
+      title: "自动化 demo",
     };
   },
   computed: {
@@ -118,18 +118,18 @@ export default {
     sendEmail() {
       axios
         .post(
-          'http://12306.woa.com/sendEmailApi',
+          "http://12306.woa.com/sendEmailApi",
           {
             receivers: this.receivers,
             content: this.preview,
-            title: '自动化测试报告',
+            title: "自动化测试报告",
           },
           {
             headers: {
               cookie:
-                'x-client-ssid=17faf6fda8f-bb1dd220d221c5db0686a13fa4c235dbbf6739c7; TCOA_TICKET=TOF4TeyJ2IjoiNCIsInRpZCI6Ikdpb0RhQnFWN0g5ZEdzU0tDNDJOWEZNeGI5T1Z2RW9vIiwiaXNzIjoiMTAuOTkuMjA4LjU2IiwiaWF0IjoiMjAyMi0wMy0yMlQxMDoyMzozNi43NDMxNDQ4NzIrMDg6MDAiLCJhdWQiOiIwLjAuMC4wIiwiaGFzaCI6IjRBQjU5MEEzMjFFOTZGQUM5QkVFQ0VFRTVGMjAyNkYyNjg3OTVDMTQ3QjkwNUUwQUMzNjg3RDZGOUU2QUIxNkYiLCJuaCI6IjM4NDNGNjc1QTFBOTAyQ0Q2RDg2NzJBRDkyMjBBNDNEQ0NBMjMxMTJEODYyMEQxODVBMzM2M0NDMkI0OThGMDAifQ; TCOA=GioDaBqV7H9dGsSKC42NXFMxb9OVvEoo; x-host-key-ngn=17faf6fdbf9-67f87cb67c7fd37e740f4b2799bc66cd2f2f6780; RIO_TCOA_TICKET=tof:TOF4TeyJ2IjoiNCIsInRpZCI6Ikdpb0RhQnFWN0g5ZEdzU0tDNDJOWEZNeGI5T1Z2RW9vIiwiaXNzIjoiMTAuOTkuMjA4LjU2IiwiaWF0IjoiMjAyMi0wMy0yMlQxMDoyMzozNi43NDMxNDQ4NzIrMDg6MDAiLCJhdWQiOiIwLjAuMC4wIiwiaGFzaCI6IjRBQjU5MEEzMjFFOTZGQUM5QkVFQ0VFRTVGMjAyNkYyNjg3OTVDMTQ3QjkwNUUwQUMzNjg3RDZGOUU2QUIxNkYiLCJuaCI6IjM4NDNGNjc1QTFBOTAyQ0Q2RDg2NzJBRDkyMjBBNDNEQ0NBMjMxMTJEODYyMEQxODVBMzM2M0NDMkI0OThGMDAifQ; wxuin=47915818328573; x-host-key-front=17faf98ba4b-745bf610cb8d822d5603fab2df465f4ba11e7517',
+                "x-client-ssid=17faf6fda8f-bb1dd220d221c5db0686a13fa4c235dbbf6739c7; TCOA_TICKET=TOF4TeyJ2IjoiNCIsInRpZCI6Ikdpb0RhQnFWN0g5ZEdzU0tDNDJOWEZNeGI5T1Z2RW9vIiwiaXNzIjoiMTAuOTkuMjA4LjU2IiwiaWF0IjoiMjAyMi0wMy0yMlQxMDoyMzozNi43NDMxNDQ4NzIrMDg6MDAiLCJhdWQiOiIwLjAuMC4wIiwiaGFzaCI6IjRBQjU5MEEzMjFFOTZGQUM5QkVFQ0VFRTVGMjAyNkYyNjg3OTVDMTQ3QjkwNUUwQUMzNjg3RDZGOUU2QUIxNkYiLCJuaCI6IjM4NDNGNjc1QTFBOTAyQ0Q2RDg2NzJBRDkyMjBBNDNEQ0NBMjMxMTJEODYyMEQxODVBMzM2M0NDMkI0OThGMDAifQ; TCOA=GioDaBqV7H9dGsSKC42NXFMxb9OVvEoo; x-host-key-ngn=17faf6fdbf9-67f87cb67c7fd37e740f4b2799bc66cd2f2f6780; RIO_TCOA_TICKET=tof:TOF4TeyJ2IjoiNCIsInRpZCI6Ikdpb0RhQnFWN0g5ZEdzU0tDNDJOWEZNeGI5T1Z2RW9vIiwiaXNzIjoiMTAuOTkuMjA4LjU2IiwiaWF0IjoiMjAyMi0wMy0yMlQxMDoyMzozNi43NDMxNDQ4NzIrMDg6MDAiLCJhdWQiOiIwLjAuMC4wIiwiaGFzaCI6IjRBQjU5MEEzMjFFOTZGQUM5QkVFQ0VFRTVGMjAyNkYyNjg3OTVDMTQ3QjkwNUUwQUMzNjg3RDZGOUU2QUIxNkYiLCJuaCI6IjM4NDNGNjc1QTFBOTAyQ0Q2RDg2NzJBRDkyMjBBNDNEQ0NBMjMxMTJEODYyMEQxODVBMzM2M0NDMkI0OThGMDAifQ; wxuin=47915818328573; x-host-key-front=17faf98ba4b-745bf610cb8d822d5603fab2df465f4ba11e7517",
             },
-          },
+          }
         )
         .then((res) => {
           console.log(res);
@@ -138,10 +138,16 @@ export default {
 
     applyData() {
       const code = JSON.parse(this.code);
-      let htmlContent = document.getElementById('tpl').innerHTML;
-      let content= htmlContent.replace(/&lt;|&#60;/g, '<').replace(/&gt;|&#62;/g, '>').replace(/&#39;/g, "'");
+      let htmlContent = document.getElementById("tpl").innerHTML;
+      let content = htmlContent
+        .replace(/&lt;|&#60;/g, "<")
+        .replace(/&gt;|&#62;/g, ">")
+        .replace(/&#39;/g, "'");
       let html = template.render(content, code);
-      this.preview = html.replace(/&lt;|&#60;/g, '<').replace(/&gt;|&#62;/g, '>').replace(/&#39;/g, "'");;
+      this.preview = html
+        .replace(/&lt;|&#60;/g, "<")
+        .replace(/&gt;|&#62;/g, ">")
+        .replace(/&#39;/g, "'");
       this.$nextTick(() => {
         this.bindEvent();
       });
@@ -150,27 +156,24 @@ export default {
     handleElementStyle(elementStyle) {
       const style = {};
       const styleResolverMap = {
-        'box-shadow': ({
-          x, y, blur, spread, color,
-        }) => `${x}px ${y}px ${blur}px ${spread}px ${color}`,
-        'background-image': (url) => (url !== 'none' ? `url('${url}')` : url),
-        'text-shadow': ({
-          x, y, blur, color,
-        }) => `${x}px ${y}px ${blur}px ${color}`,
-        'flex-shrink': (x) => x,
+        "box-shadow": ({ x, y, blur, spread, color }) =>
+          `${x}px ${y}px ${blur}px ${spread}px ${color}`,
+        "background-image": (url) => (url !== "none" ? `url('${url}')` : url),
+        "text-shadow": ({ x, y, blur, color }) => `${x}px ${y}px ${blur}px ${color}`,
+        "flex-shrink": (x) => x,
       };
 
       Object.entries(elementStyle).forEach(([key, value]) => {
         if (styleResolverMap[key]) {
           style[key] = styleResolverMap[key](value);
-        } else if (typeof value === 'number') {
+        } else if (typeof value === "number") {
           style[key] = `${value}px`;
         } else {
           style[key] = value;
         }
       });
 
-      let styleStr = '';
+      let styleStr = "";
       for (const key in style) {
         styleStr += `${key}:${style[key]};`;
       }
@@ -182,91 +185,97 @@ export default {
       arr.forEach((item, index) => {
         let dom;
         switch (item.componentName) {
-          case 'Heading': {
-            let tag = item.props.textHref ? 'a' : item.props.headingType;
+          case "Heading": {
+            let tag = item.props.textHref ? "a" : item.props.headingType;
             dom = document.createElement(tag);
-            if(tag === 'a') {dom.setAttribute('href', item.props.textHref)}
-            dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
+            if (tag === "a") {
+              dom.setAttribute("href", item.props.textHref);
+            }
+            dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
             dom.innerText = item.props.content;
             break;
           }
 
-          case 'Canvas': {
-            dom = document.createElement('div');
+          case "Canvas": {
+            dom = document.createElement("div");
             dom.setAttribute(
-              'style',
-              `${this.handleElementStyle(item.props.elementStyle)}display: flex;`,
+              "style",
+              `${this.handleElementStyle(item.props.elementStyle)}display: flex;`
             );
             // 去除掉 100% 宽度
-            dom.style.width = 'auto';
+            dom.style.width = "auto";
             break;
           }
 
-          case 'Paragraph': {
-            let tag = item.props.pHref ? 'a' : 'p';
+          case "Paragraph": {
+            let tag = item.props.pHref ? "a" : "p";
             dom = document.createElement(tag);
-            if(tag === 'a') {dom.setAttribute('href', item.props.pHref) }
-            dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
+            if (tag === "a") {
+              dom.setAttribute("href", item.props.pHref);
+            }
+            dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
             dom.innerText = item.props.content;
             break;
           }
 
-          case 'Picture': {
-            dom = document.createElement('img');
-            dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
-            dom.setAttribute('src', item.props.imageUrl);
+          case "Picture": {
+            dom = document.createElement("img");
+            dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
+            dom.setAttribute("src", item.props.imageUrl);
 
             let a = null;
-            if(item.props.imgHref) {
-              a = document.createElement('a');
-              a.setAttribute('href', item.props.imgHref);
-              a.setAttribute('style', 'width: 100%')
+            if (item.props.imgHref) {
+              a = document.createElement("a");
+              a.setAttribute("href", item.props.imgHref);
+              a.setAttribute("style", "width: 100%");
               a.appendChild(dom);
-              dom = a
+              dom = a;
             }
             break;
           }
 
-          case 'Button': {
-            dom = document.createElement('div');
-            dom.setAttribute('style', this.handleElementStyle(item.props.parentStyle))
+          case "Button": {
+            dom = document.createElement("div");
+            dom.setAttribute("style", this.handleElementStyle(item.props.parentStyle));
 
-            let cDom = document.createElement('button');
+            let cDom = document.createElement("button");
             cDom.setAttribute(
-              'style',
-              `${this.handleElementStyle(item.props.elementStyle)}cursor: pointer;`,
+              "style",
+              `${this.handleElementStyle(item.props.elementStyle)}cursor: pointer;`
             );
-            cDom.setAttribute('class', 'clickBtn');
-            cDom.setAttribute('url', item.props.btnUrl);
+            cDom.setAttribute("class", "clickBtn");
+            cDom.setAttribute("url", item.props.btnUrl);
             cDom.innerHTML = item.props.content;
             dom.appendChild(cDom);
             break;
           }
 
-          case 'Table': {
-            dom = document.createElement('table');
-            dom.setAttribute('id', item.uuid);
-            dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
+          case "Table": {
+            dom = document.createElement("table");
+            dom.setAttribute("id", item.uuid);
+            dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
             let field = item.props.content.tField;
-            let tagText = `<thead><tr>{{each ${field}}}<th>{{$value.name}}</th>{{/each}}</tr></thead><tbody>{{each ${field}}}<tr>{{set data=$value.data}}{{each data}}<td>{{$value}}</td>{{/each}}</tr>{{/each}}</tbody>`;
+            let tagText = `<thead><tr>{{each ${field}}}<th align='center'>{{$value.name}}</th>{{/each}}</tr></thead><tbody>{{each ${field}}}<tr>{{set data=$value.data}}{{each data}}<td align='center'>{{$value}}</td>{{/each}}</tr>{{/each}}</tbody>`;
             let encodeText = this.HTMLEncode(tagText);
             dom.innerText = this.HTMLDecode(encodeText);
-            this.codeData[item.props.content.tField] = item.props.content[`${field}`]
+            this.codeData[item.props.content.tField] = item.props.content[`${field}`];
             break;
           }
 
-          case 'List': {
-              dom = document.createElement('ul');
-              dom.setAttribute('style', this.handleElementStyle(item.props.elementStyle));
-              item.props.content.listData.forEach(v => {
-                let li = document.createElement('li');
-                li.innerHTML = v
-                dom.appendChild(li)
-              })
+          case "List": {
+            dom = document.createElement("ul");
+            dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
+            item.props.content.listData.forEach((v) => {
+              let li = document.createElement("li");
+              li.innerHTML = v;
+              dom.appendChild(li);
+            });
           }
 
-          case 'Charts': {
-            break
+          case "Charts": {
+            dom = document.createElement('img');
+            dom.setAttribute('src', item.props.imgUrl);
+            break;
           }
 
           default: {
@@ -284,38 +293,37 @@ export default {
     },
 
     HTMLEncode(html) {
-        var temp = document.createElement("div");
-        (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
-        var output = temp.innerHTML;
-        temp = null;
-        return output;
+      var temp = document.createElement("div");
+      temp.textContent != null ? (temp.textContent = html) : (temp.innerText = html);
+      var output = temp.innerHTML;
+      temp = null;
+      return output;
     },
 
-    HTMLDecode(text) { 
-        var temp = document.createElement("div"); 
-        temp.innerHTML = text; 
-        var output = temp.innerText || temp.textContent; 
-        temp = null; 
-        return output; 
+    HTMLDecode(text) {
+      var temp = document.createElement("div");
+      temp.innerHTML = text;
+      var output = temp.innerText || temp.textContent;
+      temp = null;
+      return output;
     },
-
 
     loadStyleString(css) {
       var style = document.createElement("style");
       style.type = "text/css";
       try {
-          style.appendChild(document.createTextNode(css));
-      } catch(ex) {
-          style.styleSheet.cssText = css;
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
       }
-      var head = document.getElementsByTagName('head')[0];
+      var head = document.getElementsByTagName("head")[0];
       head.appendChild(style);
     },
 
     openPreviewDialog() {
-      const parentNode = document.createElement('div');
-      parentNode.setAttribute('id', 'previewDialog');
-      const oScript = document.getElementById('tpl');
+      const parentNode = document.createElement("div");
+      parentNode.setAttribute("id", "previewDialog");
+      const oScript = document.getElementById("tpl");
       const item = this.createNode(parentNode, this.editor.nodes);
       oScript.innerHTML = item.outerHTML;
       this.preview = item.outerHTML;
@@ -323,12 +331,15 @@ export default {
         this.bindEvent();
       });
 
-      this.codeData = Object.assign({
-        "desc": "1243",
-        "params": "124w",
-        "title": "hello world",
-        "imgUrl": "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png",
-      }, this.codeData)
+      this.codeData = Object.assign(
+        {
+          desc: "1243",
+          params: "124w",
+          title: "hello world",
+          imgUrl: "https://mochi-1303099125.cos.ap-guangzhou.myqcloud.com/20210819111753.png",
+        },
+        this.codeData
+      );
 
       this.code = JSON.stringify(this.codeData, null, 2);
       this.showPreviewDialog = true;
@@ -336,27 +347,27 @@ export default {
 
     bindEvent() {
       // btn 的通用事件
-      const arr = document.querySelectorAll('.clickBtn');
-      if(!arr.length) return false;
+      const arr = document.querySelectorAll(".clickBtn");
+      if (!arr.length) return false;
       for (let index = 0; index < arr.length; index++) {
         const element = arr[index];
-        element.addEventListener('click', (e) => {
-          const url = element.getAttribute('url');
-          window.open(url, '_blank');
+        element.addEventListener("click", (e) => {
+          const url = element.getAttribute("url");
+          window.open(url, "_blank");
         });
       }
     },
     editorInit() {
-      require('brace/theme/chrome');
-      require('brace/ext/language_tools'); // language extension prerequsite...
-      require('brace/mode/yaml');
-      require('brace/mode/json');
-      require('brace/mode/less');
-      require('brace/snippets/json');
-      require('brace/mode/lua');
-      require('brace/snippets/lua');
-      require('brace/mode/javascript');
-      require('brace/snippets/javascript');
+      require("brace/theme/chrome");
+      require("brace/ext/language_tools"); // language extension prerequsite...
+      require("brace/mode/yaml");
+      require("brace/mode/json");
+      require("brace/mode/less");
+      require("brace/snippets/json");
+      require("brace/mode/lua");
+      require("brace/snippets/lua");
+      require("brace/mode/javascript");
+      require("brace/snippets/javascript");
     },
     updateState(enabled) {
       if (enabled) {
@@ -373,14 +384,14 @@ export default {
     },
     copyExport() {
       this.$refs.exportTextarea.select();
-      document.execCommand('Copy');
-      this.$message.success('Copied!');
+      document.execCommand("Copy");
+      this.$message.success("Copied!");
     },
     doImport() {
       try {
         this.editor.import(this.importData);
-        this.$message.success('Imported!');
-        this.importData = '';
+        this.$message.success("Imported!");
+        this.importData = "";
         this.toggleImportDialog();
       } catch ({ message }) {
         this.$message.error(message);
@@ -389,9 +400,9 @@ export default {
   },
 
   mounted() {
-    const oScript = document.createElement('script');
-    oScript.type = 'text/html';
-    oScript.id = 'tpl';
+    const oScript = document.createElement("script");
+    oScript.type = "text/html";
+    oScript.id = "tpl";
     document.body.appendChild(oScript);
   },
 };

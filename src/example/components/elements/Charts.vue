@@ -5,14 +5,32 @@
 <script>
 import Editor from "./utils/Editor.vue";
 import elementStyleMixin from "./elementStyleMixin";
+import mixin from './styleSettings/mixin';
+import ChartSetting from "./ChartSetting.vue";
 
 export default {
-  mixins: [elementStyleMixin],
+  mixins: [elementStyleMixin, mixin],
   components: { Editor },
   inject: ["node"],
+  props: {
+    imgUrl: String,
+  },
   data() {
-    return {
-      imgUrl: "",
+    return {};
+  },
+  mounted() {
+    axios.post("/api/chart/getChartImage", this.elementProps.option).then((res) => {
+      console.log("cate", res);
+      let data = res.data;
+      if (data.code === 0) {
+        this.elementPropsSetter({ imgUrl: data.data });
+      }
+    });
+  },
+  craft: {
+    defaultProps: {
+      content: "",
+      imgUrl: "http://mmfinderanstatics-1258344707.cos.ap-shanghai.myqcloud.com/export_chart_server/files/email/20220329102443da08cc291fb486338562ae3652a924d8.png",
       option: {
         options: {
           chart: {
@@ -43,23 +61,12 @@ export default {
           ],
         },
       },
-    };
-  },
-  mounted() {
-    axios.post("/api/chart/getChartImage", this.option).then((res) => {
-      console.log("cate", res);
-      let data = res.data;
-      if (data.code === 0) {
-        this.imgUrl = data.data;
-      }
-    });
-  },
-  craft: {
-    defaultProps: {
       elementStyle: {},
       parentStyle: {},
     },
-    settings: {},
+    settings: {
+      Properties: ChartSetting,
+    },
   },
 };
 </script>

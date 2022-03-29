@@ -32,6 +32,43 @@ export default `
 			"component": "Container"
 	},
 	"children": [{
+			"componentName": "Charts",
+			"props": {
+					"content": "",
+					"imgUrl": "http://mmfinderanstatics-1258344707.cos.ap-shanghai.myqcloud.com/export_chart_server/files/email/20220329102443da08cc291fb486338562ae3652a924d8.png",
+					"option": {
+							"options": {
+									"chart": {
+											"type": "area"
+									},
+									"title": {
+											"text": "Area chart with negative values"
+									},
+									"xAxis": {
+											"categories": ["Apples", "Oranges", "Pears", "Grapes", "Bananas"]
+									},
+									"credits": {
+											"enabled": false
+									},
+									"series": [{
+											"name": "John",
+											"data": [5, 3, 4, 7, 2]
+									}, {
+											"name": "Jane",
+											"data": [2, -2, -3, 2, 1]
+									}, {
+											"name": "Joe",
+											"data": [3, 4, 4, -2, 5]
+									}]
+							}
+					},
+					"elementStyle": {},
+					"parentStyle": {}
+			},
+			"children": [],
+			"addition": {},
+			"uuid": "2283a67f-1df8-45e0-bb51-ab01153e1f76"
+	}, {
 			"componentName": "Table",
 			"props": {
 					"content": {
