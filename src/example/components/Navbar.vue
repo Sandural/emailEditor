@@ -139,10 +139,9 @@ export default {
     applyData() {
       const code = JSON.parse(this.code);
       let htmlContent = document.getElementById('tpl').innerHTML;
-      let content= htmlContent.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-      const html = template.render(content, code);
-      console.log(html);
-      this.preview = html;
+      let content= htmlContent.replace(/&lt;|&#60;/g, '<').replace(/&gt;|&#62;/g, '>').replace(/&#39;/g, "'");
+      let html = template.render(content, code);
+      this.preview = html.replace(/&lt;|&#60;/g, '<').replace(/&gt;|&#62;/g, '>').replace(/&#39;/g, "'");;
       this.$nextTick(() => {
         this.bindEvent();
       });

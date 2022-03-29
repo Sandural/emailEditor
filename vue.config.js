@@ -14,4 +14,15 @@ module.exports = {
       ]);
     }
   },
+
+  devServer: {
+    disableHostCheck: true,
+    proxy: {
+      "/api/": {
+        target: "http://minion.weixin.oa.com",
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, "")
+      }
+    }
+  }
 };
