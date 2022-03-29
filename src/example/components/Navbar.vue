@@ -226,9 +226,9 @@ export default {
             dom.setAttribute("src", `{{${field}.imageUrl}}`);
 
             let a = null;
-            if (item.props.imgHref) {
+            if (item.props.content[field].imgHref) {
               a = document.createElement("a");
-              a.setAttribute("href", item.props.content[field].imgHref);
+              a.setAttribute("href", `{{${field}.imgHref}}`);
               a.setAttribute("style", "width: 100%");
               a.appendChild(dom);
               dom = a;
