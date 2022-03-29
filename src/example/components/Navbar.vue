@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import { tsThisType } from "@babel/types";
 import ACEEDITOR from "vue2-ace-editor";
 import template from "../template-web.js";
 
@@ -219,6 +220,7 @@ export default {
           }
 
           case "Picture": {
+            console.log('Picture');
             dom = document.createElement("img");
             dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
             dom.setAttribute("src", item.props.imageUrl);
@@ -263,18 +265,30 @@ export default {
           }
 
           case "List": {
+            console.log('list');
             dom = document.createElement("ul");
             dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
-            item.props.content.listData.forEach((v) => {
+            let field = item.props.content.tField;
+            item.props.content[field].forEach((v) => {
               let li = document.createElement("li");
               li.innerHTML = v;
               dom.appendChild(li);
             });
+
+            this.codeData[item.props.content.tField] = item.props.content[`${field}`];
+            break;
           }
 
           case "Charts": {
+            console.log('chart');
             dom = document.createElement('img');
             dom.setAttribute('src', item.props.imgUrl);
+            break;
+          }
+
+          case "Divider": {
+            dom = document.createElement('div');
+            dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
             break;
           }
 
