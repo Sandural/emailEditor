@@ -8,13 +8,11 @@
 
     <el-dialog :visible.sync="chartDialogVisible">
       <div style="font-weight: 700; position: absolute; top: 20px">选项</div>
-      <el-button
-        style="position: absolute; top: 18px; right: 60px"
-        type="plain"
-        size="mini"
-        @click="saveChartACE"
-        >保存</el-button
-      >
+      <div style="position: absolute; top: 18px; right: 60px">
+        <el-button type="plain" size="mini" @click="openHighchart">查看 option 配置</el-button>
+        <el-button type="plain" size="mini" @click="saveChartACE">保存</el-button>
+      </div>
+
       <div style="height: 500px" id="ace-62e3">
         <ACEEDITOR
           v-model="code"
@@ -58,6 +56,10 @@ export default {
           this.elementPropsSetter({ imgUrl: data.data });
         }
       });
+    },
+
+    openHighchart() {
+      window.open('https://www.highcharts.com/', '_blank');
     },
 
     editorInit(editor) {

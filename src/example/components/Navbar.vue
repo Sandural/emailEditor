@@ -182,6 +182,16 @@ export default {
       return styleStr;
     },
 
+    handleText(content) {
+      let re = /{{(.*?)}}/g
+      let r = "";
+      let fields = [];
+      while(r = re.exec(content)) {
+        fields.push(r[1].trim())
+      }
+      fields.forEach(v => this.codeData[v] = "");
+    },
+
     createNode(pnode, arr) {
       arr.forEach((item, index) => {
         let dom;
@@ -193,6 +203,7 @@ export default {
               dom.setAttribute("href", item.props.textHref);
             }
             dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
+            this.handleText(item.props.content);
             dom.innerText = item.props.content;
             break;
           }
@@ -215,6 +226,7 @@ export default {
               dom.setAttribute("href", item.props.pHref);
             }
             dom.setAttribute("style", this.handleElementStyle(item.props.elementStyle));
+            this.handleText(item.props.content);
             dom.innerText = item.props.content;
             break;
           }
@@ -347,14 +359,7 @@ export default {
         this.bindEvent();
       });
 
-      this.codeData = Object.assign(
-        {
-          desc: "1243",
-          params: "124w",
-          title: "hello world",
-        },
-        this.codeData
-      );
+      this.codeData = Object.assign({},this.codeData);
 
       this.code = JSON.stringify(this.codeData, null, 2);
       this.showPreviewDialog = true;
